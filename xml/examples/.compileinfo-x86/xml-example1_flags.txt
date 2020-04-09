@@ -1,0 +1,2 @@
+-L /home/perthi/nautilus/software/build/x86/lib -lm -lcmdline -llogmaster -lcontrol-engine -lconfiguration -lxml-embc -lxml2 -lutilities -lreadline -lcommon -lboost_system -lboost_filesystem
+c++ -std=c++17 -fPIC -std=c++17 -ggdb -g -o xml-example1 xml-example1.o GVersion.o -L /home/perthi/nautilus/software/build/x86/lib -lm -lcmdline -llogmaster -lcontrol-engine -lconfiguration -lxml-embc -lxml2 -lutilities -lreadline -lcommon -lboost_system -lboost_filesystem
