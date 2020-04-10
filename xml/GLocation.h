@@ -29,6 +29,10 @@ struct GLocation
     int   fLineNo;
     string fFunctName;
 
+
+    inline string str() const {  return string( c_str() );  }
+
+
     inline const char * c_str() const
     {
         typeid(this).name();

@@ -23,7 +23,8 @@ SRCCPP+= GXmlAttribute.cpp \
 	GXmlTextNode.cpp \
 	GXmlValidatorImpl.cpp \
 	GText.cpp \
-	GPrintable.cpp
+	GPrintable.cpp \
+	GCommon.cpp \
 
 
 CPPFLAGS:=$(CPPFLAGS_RELAXED)

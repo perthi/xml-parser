@@ -31,4 +31,7 @@
 *.out
 *.app
 
+
 xml/unit-tests/commit/x86/xml-unit-tests
+xml/examples/xml-example1/x86/xml-example1
+xml/xml-validator/x86/xml-validator
