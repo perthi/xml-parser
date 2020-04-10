@@ -28,23 +28,14 @@ bool GXmlValidatorImpl::fHasError = false;
 
 static void schemaParseErrorHandler(void *ctx, xmlErrorPtr error)
 {
-	// PUSH();
-	// SET_LOGFORMAT("11111111");
 	LOGMASTER::eMSGLEVEL loglevel =   GXmlValidatorImpl::ErrorLevel2Loglevel( error->level );
   //  fprintf(stderr, "Error at line %d, column %d\tint1 %d\n%s\n", error->line, error->int2, error->int1, error->message);
-
 	fprintf(stderr, "filename: %s\n", error->file );
 
 	LLogging::Instance()->Log(loglevel, eMSGSYSTEM::SYS_GENERAL, GLocation(error->file, error->line,  ""  ), "Offending file: %s (error code %d) (from %s line[%d])",
 	error->message, error->code, __func__, __LINE__  );
-	// PUSH();
-	// SET_LOGFORMAT("00000001");
 	LLogging::Instance()->Log(loglevel, eMSGSYSTEM::SYS_GENERAL, GLocation(error->file, error->line,  ""  ), "%s line %d contains error(s)  !!!!!!!!",  error->file, error->line );
-	// POP();
-
 	GXmlValidatorImpl::SetError(true);
-	// POP();
-
 }
 
 
