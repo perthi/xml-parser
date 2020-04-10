@@ -2,7 +2,7 @@
 PROGRAM:=xml-unit-tests
 
 
-SRCCPP += xml-dll-test.cpp \
+SRCCPP += xml-unit-tests.cpp \
 	TestGXmlClassFactory.cpp \
 	TestGXmlValidatorImpl.cpp 
 
