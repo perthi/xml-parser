@@ -9,11 +9,15 @@
 * For more information please contact pth@embc.no
 ******************************************************/
 
+#ifdef _WIN32
+#include <gtest/gtest.h>
+#else
+#include <gtest-linux/gtest.h>
+#endif
 
 
-#include <testlib/TestBase.h>
 
-class TestGXmlClassFactory : public TestBase
+class TestGXmlClassFactory : public testing::Test
 {
 public:
 	virtual void SetUp() override;

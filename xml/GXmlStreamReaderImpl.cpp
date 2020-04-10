@@ -17,6 +17,7 @@
 #include "GXmlDocTypeNode.h"
 #include "GXmlCDataNode.h"
 
+
 #include "GCommon.h"
 #include "GText.h"
 #include "GLocation.h"
@@ -57,9 +58,7 @@ std::string NodeTypeToString(const int t)
 	case XML_READER_TYPE_XML_DECLARATION: return "xml_declaration";
 	}
 
-
-	EXCEPTION("error determining xml node type for type %i", t);
-
+	g_common()->HandleError( GText ( "error determining xml node type for type %i", t).str() , GLOCATION, THROW_EXCEPTION  );
 	return "ERROR_TYPE";
 }
 
@@ -71,7 +70,12 @@ GXmlStreamReaderImpl::GXmlStreamReaderImpl(const std::string& filename)
 	: fFilename(filename)
 {
 	fReader = xmlReaderForFile(fFilename.c_str(), "UTF-8", 0);
-	G_ASSERT_EXCEPTION(fReader != NULL, "xml open failed: %s", filename.c_str());
+	
+	if( fReader == nullptr  )
+	{
+		g_common()->HandleError( GText (  "xml open failed: %s", filename.c_str()  ).str() , GLOCATION, THROW_EXCEPTION  );
+	}
+
 }
 
 
@@ -102,7 +106,7 @@ GXmlNode* GXmlStreamReaderImpl::ReadNode()
 		{
 			if (returncode != 0)
 			{
-				G_ERROR("Read failed");
+				g_common()->HandleError(  "Read failed", GLOCATION, DISABLE_EXCEPTION  );
 			}
 
 			break;
@@ -186,7 +190,7 @@ GXmlNode* GXmlStreamReaderImpl::CreateNodeFromType(const int nodetype, const cha
 	//case XML_READER_TYPE_XML_DECLARATION: return "xml_declaration";
 	default:
 		// document has a node type which is not implemented.
-		EXCEPTION("Node with type %i (%s) not found", nodetype, NodeTypeToString(nodetype));
+		g_common()->HandleError( GText (    "Node with type %i (%s) not found", nodetype, NodeTypeToString(nodetype)    ).str() , GLOCATION, THROW_EXCEPTION  );
 	}
 
 	return node;
@@ -217,7 +221,6 @@ GXmlStreamReaderImpl::GetColumnNumber()  const
 void
 GXmlStreamReaderImpl::DoError(void *ctx, const char *msg, ...)
 {
-//	FORCE_DEBUG("Calling DO ERROR XXXXXXXX, ctx = 0x%x", ctx );
 	GLocation location = *((GLocation*)ctx);
 	char buff[10240];
 	va_list ap;
@@ -228,7 +231,5 @@ GXmlStreamReaderImpl::DoError(void *ctx, const char *msg, ...)
 	vsnprintf (buff, sizeof(buff), msg, ap);
 	#endif
 	va_end(ap);
-//	XML_ERROR("%s", buff );
-
-	LLogging::Instance()->Log(eMSGLEVEL::LOG_ERROR, eMSGSYSTEM::SYS_GENERAL, location, buff);
+	g_common()->HandleError( GText (   buff    ).str() , location,  DISABLE_EXCEPTION );
 }

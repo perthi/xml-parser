@@ -4,11 +4,10 @@ PROGRAM:=xml-unit-tests
 
 SRCCPP += xml-dll-test.cpp \
 	TestGXmlClassFactory.cpp \
-	TestGXmlValidatorImpl.cpp \
-	GVersion.cpp
+	TestGXmlValidatorImpl.cpp 
 
 include ../../../../common.mk
 include ../../../../unittest-common.mk
 
-LIBS+= -llogmaster -lutilities -lcmdline  -lexception -lreadline -lxml-embc  -lxml2
+LIBS+=  -lreadline -lxml-embc  -lxml2
 INCLUDES+=$(GTEST_INCLUDES)

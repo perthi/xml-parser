@@ -8,14 +8,18 @@
 * For more information please contact pth@embc.no
 ******************************************************/
 
+#ifdef _WIN32
+#include <gtest/gtest.h>
+#else
+#include <gtest-linux/gtest.h>
+#endif
 
-
-#include <testlib/TestBase.h>
 #include <string>
 
 using std::string;
 
-class TestGXmlValidatorImpl : public TestBase
+
+class TestGXmlValidatorImpl : public testing::Test
 {
     protected:
         static void SetUpTestCase();

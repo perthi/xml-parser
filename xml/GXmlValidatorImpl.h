@@ -12,6 +12,7 @@
 #include <libxml/xmlerror.h>
 #include "GDefinitions.h"
 
+#include "LEnums.h"
 
 class GXmlValidatorImpl
 {
@@ -19,7 +20,7 @@ public:
 	static bool  API  IsValid(std::string xmlFilename, std::string xsdFilename);
 	static void  API  SetError(const bool err);
 	static bool  API  HasError();
-	static int  ErrorLevel2Loglevel(const int level);
+	static eLOGLEVEL  ErrorLevel2Loglevel(const int level);
 
 private:
 	static void  DoError(void *ctx, const char *msg, ...);

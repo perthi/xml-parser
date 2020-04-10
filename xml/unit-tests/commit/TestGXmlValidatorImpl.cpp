@@ -8,11 +8,7 @@
 
 #include "TestGXmlValidatorImpl.h"
 #include <xml/GXmlValidator.h>
-#include <utilities/GSystem.h>
- 
- #include <cstdlib>
-
-
+#include <cstdlib>
 
  
  string  TestGXmlValidatorImpl::fDataDir = "";
