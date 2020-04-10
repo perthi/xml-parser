@@ -17,13 +17,16 @@
 #include "GXmlDocTypeNode.h"
 #include "GXmlCDataNode.h"
 
+#include "GCommon.h"
+#include "GText.h"
+#include "GLocation.h"
+
 #include <libxml/xmlreader.h>
 
 #include <vector>
 #include <algorithm>
 
-#include <exception/GException.h>
-#include <logging/LLogging.h>
+
 
 
 #define XML_SUCCESS_ASSERT(returnvalue, ...) DATA_ASSERT((returnvalue) == NULL, __VA_ARGS__);

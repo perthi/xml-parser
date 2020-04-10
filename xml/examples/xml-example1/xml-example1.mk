@@ -11,5 +11,5 @@ CPPFLAGS:=$(CPPFLAGS_RELAXED)
 INCLUDES+=$(XML_INCLUDES)
 INCLUDES+=$(PROTOBUF_INCLUDES)
 
-include ../../../../../common.mk
+include ../../../../common.mk
 

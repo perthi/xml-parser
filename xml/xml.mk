@@ -21,7 +21,9 @@ SRCCPP+= GXmlAttribute.cpp \
 	GXmlStreamReaderImpl.cpp \
 	GXmlStreamWriterImpl.cpp \
 	GXmlTextNode.cpp \
-	GXmlValidatorImpl.cpp 
+	GXmlValidatorImpl.cpp \
+	GText.cpp \
+	GPrintable.cpp
 
 
 CPPFLAGS:=$(CPPFLAGS_RELAXED)

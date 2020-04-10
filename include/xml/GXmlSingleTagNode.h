@@ -1,0 +1,1 @@
+../../xml/GXmlSingleTagNode.h

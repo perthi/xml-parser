@@ -9,7 +9,7 @@
 #include "GXmlStreamWriterImpl.h"
 #include "GXmlStreamReaderImpl.h"
 
-#include <exception/GException.h>
+
 
 GXmlStreamWriter* GXmlClassFactory::CreateStreamWriter(std::string fileName)
 {

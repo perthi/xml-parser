@@ -8,7 +8,7 @@
 #ifndef GXMLVALIDATOR_H
 #define GXMLVALIDATOR_H
 
-#include <utilities/GDefinitions.h>
+#include "GDefinitions.h"
 
 class GXmlValidator
 {

@@ -6,13 +6,12 @@
 ******************************************************/
 
 #include "GXmlValidatorImpl.h"
-#include <utilities/GFileIOHandler.h>
-#include <exception/GException.h>
+#include "GCommon.h"
+
 #include <libxml/xmlschemastypes.h>
 #include <libxml/xmlerror.h>
 #include <libxml/xmlschemas.h>
 #include <libxml/xmlschemastypes.h>
-#include <logging/LLogApi.h>
 #include <stdio.h>
 #include <stdbool.h>
 #include <libxml/xmlreader.h>

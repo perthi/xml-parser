@@ -1,0 +1,1 @@
+../../xml/GXmlAttribute.h
