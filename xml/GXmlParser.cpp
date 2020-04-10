@@ -107,17 +107,7 @@ GXmlParser::PrinttAttributes( const GXmlNode * const node,  GLocation l)
 	
 	for(size_t i =0; i < a.size(); i++ )
 	{
-		GText(   (const char *)"Attribute[%d]: name = %s, value = %s", 
-		           i, 
-				   a.at(i).GetName().c_str(), 
-				   a.at(i).GetValue().c_str() ); 
-		
-		// GText(   "Attribute[%d]: name = %s", 
-		//            i, 
-		// 		   a.at(i).GetName().c_str() ); 
-
-		
-		//COUT << l.str() << ":" << GText(   "Attribute[%d]: name = %s, value = %s", i, a.at(i).GetName().c_str(), a.at(i).GetValue().c_str()    ).str()  << endl;	
+		COUT << l.str() << ":" << GText(   "Attribute[%d]: name = %s, value = %s", i, a.at(i).GetName().c_str(), a.at(i).GetValue().c_str()    ).str()  << endl;	
 	}
 
 	#endif
