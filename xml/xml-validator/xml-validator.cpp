@@ -175,7 +175,7 @@ bool
 help( const string ex )
 {
     cout << endl;
-    PrintMessage(  GText( "Usage: %s  [xsd-file]  [xml-file]", ex.c_str() ).str()  ,  GLOCATION, eLOGLEVEL::LOG_INFO, false );
+    PrintMessage(  GText( "Usage: %s  [xml-file]  [xsd-file]", ex.c_str() ).str()  ,  GLOCATION, eLOGLEVEL::LOG_INFO, false );
     cout << endl;
     return true;
 }

@@ -37,7 +37,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = xml1.0.0
-DISTDIR = /home/perthi/nautilus/software/support-modules/xml/.tmp/xml1.0.0
+DISTDIR = /home/perthi/github/xml-parser/xml/.tmp/xml1.0.0
 LINK          = g++
 LFLAGS        = -shared -Wl,-soname,libxml.so.1
 LIBS          = $(SUBLIBS) -lpthread   
@@ -141,7 +141,6 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf \
-		../../.qmake.stash \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf \
@@ -289,7 +288,6 @@ Makefile: xml.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf /us
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf \
-		../../.qmake.stash \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf \
@@ -368,7 +366,6 @@ Makefile: xml.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf /us
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf:
-../../.qmake.stash:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf:
@@ -409,6 +406,7 @@ clean: compiler_clean
 distclean: clean 
 	-$(DEL_FILE) ../../build/x86/lib/$(TARGET) 
 	-$(DEL_FILE) ../../build/x86/lib/$(TARGET0) ../../build/x86/lib/$(TARGET1) ../../build/x86/lib/$(TARGET2) $(TARGETA)
+	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -428,67 +426,88 @@ compiler_clean:
 
 ####### Compile
 
-GXmlAttribute.o: GXmlAttribute.cpp GXmlAttribute.h
+GXmlAttribute.o: GXmlAttribute.cpp GXmlAttribute.h \
+		GDefinitions.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o GXmlAttribute.o GXmlAttribute.cpp
 
 GXmlClassFactory.o: GXmlClassFactory.cpp GXmlClassFactory.h \
+		GDefinitions.h \
 		GXmlStreamWriterImpl.h \
 		GXmlStreamWriter.h \
 		GXmlAttribute.h \
 		GXmlStreamReaderImpl.h \
 		GXmlStreamReader.h \
-		GXmlNode.h
+		GXmlNode.h \
+		GXmlEnums.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o GXmlClassFactory.o GXmlClassFactory.cpp
 
 GXmlDocTypeNode.o: GXmlDocTypeNode.cpp GXmlDocTypeNode.h \
 		GXmlNodeImpl.h \
 		GXmlNode.h \
-		GXmlAttribute.h
+		GXmlAttribute.h \
+		GDefinitions.h \
+		GXmlEnums.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o GXmlDocTypeNode.o GXmlDocTypeNode.cpp
 
 GXmlProcInstructNode.o: GXmlProcInstructNode.cpp GXmlProcInstructNode.h \
 		GXmlNodeImpl.h \
 		GXmlNode.h \
-		GXmlAttribute.h
+		GXmlAttribute.h \
+		GDefinitions.h \
+		GXmlEnums.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o GXmlProcInstructNode.o GXmlProcInstructNode.cpp
 
 GXmlStreamReaderSp.o: GXmlStreamReaderSp.cpp GXmlStreamReaderSp.h \
 		GXmlNode.h \
-		GXmlAttribute.h
+		GXmlAttribute.h \
+		GDefinitions.h \
+		GXmlEnums.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o GXmlStreamReaderSp.o GXmlStreamReaderSp.cpp
 
 GXmlTagNode.o: GXmlTagNode.cpp GXmlTagNode.h \
 		GXmlNodeImpl.h \
 		GXmlNode.h \
-		GXmlAttribute.h
+		GXmlAttribute.h \
+		GDefinitions.h \
+		GXmlEnums.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o GXmlTagNode.o GXmlTagNode.cpp
 
 GXmlValidator.o: GXmlValidator.cpp GXmlValidator.h \
-		GXmlValidatorImpl.h
+		GDefinitions.h \
+		GXmlValidatorImpl.h \
+		LEnums.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o GXmlValidator.o GXmlValidator.cpp
 
 GXmlCDataNode.o: GXmlCDataNode.cpp GXmlCDataNode.h \
 		GXmlNodeImpl.h \
 		GXmlNode.h \
-		GXmlAttribute.h
+		GXmlAttribute.h \
+		GDefinitions.h \
+		GXmlEnums.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o GXmlCDataNode.o GXmlCDataNode.cpp
 
 GXmlCommentNode.o: GXmlCommentNode.cpp GXmlCommentNode.h \
 		GXmlNodeImpl.h \
 		GXmlNode.h \
-		GXmlAttribute.h
+		GXmlAttribute.h \
+		GDefinitions.h \
+		GXmlEnums.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o GXmlCommentNode.o GXmlCommentNode.cpp
 
 GXmlNodeImpl.o: GXmlNodeImpl.cpp GXmlNodeImpl.h \
 		GXmlNode.h \
-		GXmlAttribute.h
+		GXmlAttribute.h \
+		GDefinitions.h \
+		GXmlEnums.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o GXmlNodeImpl.o GXmlNodeImpl.cpp
 
 GXmlStreamReaderImpl.o: GXmlStreamReaderImpl.cpp GXmlStreamReaderImpl.h \
 		GXmlClassFactory.h \
+		GDefinitions.h \
 		GXmlStreamReader.h \
 		GXmlNode.h \
 		GXmlAttribute.h \
+		GXmlEnums.h \
 		GXmlOpenTagNode.h \
 		GXmlTagNode.h \
 		GXmlNodeImpl.h \
@@ -498,22 +517,41 @@ GXmlStreamReaderImpl.o: GXmlStreamReaderImpl.cpp GXmlStreamReaderImpl.h \
 		GXmlCommentNode.h \
 		GXmlProcInstructNode.h \
 		GXmlDocTypeNode.h \
-		GXmlCDataNode.h
+		GXmlCDataNode.h \
+		GCommon.h \
+		GText.h \
+		GPrintable.h \
+		GLocation.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o GXmlStreamReaderImpl.o GXmlStreamReaderImpl.cpp
 
 GXmlStreamWriterImpl.o: GXmlStreamWriterImpl.cpp GXmlClassFactory.h \
+		GDefinitions.h \
 		GXmlStreamWriterImpl.h \
 		GXmlStreamWriter.h \
-		GXmlAttribute.h
+		GXmlAttribute.h \
+		GXmlMacros.h \
+		GCommon.h \
+		GText.h \
+		GPrintable.h \
+		GLocation.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o GXmlStreamWriterImpl.o GXmlStreamWriterImpl.cpp
 
 GXmlTextNode.o: GXmlTextNode.cpp GXmlTextNode.h \
 		GXmlNodeImpl.h \
 		GXmlNode.h \
-		GXmlAttribute.h
+		GXmlAttribute.h \
+		GDefinitions.h \
+		GXmlEnums.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o GXmlTextNode.o GXmlTextNode.cpp
 
-GXmlValidatorImpl.o: GXmlValidatorImpl.cpp GXmlValidatorImpl.h
+GXmlValidatorImpl.o: GXmlValidatorImpl.cpp GXmlValidatorImpl.h \
+		GDefinitions.h \
+		LEnums.h \
+		GXmlMacros.h \
+		GCommon.h \
+		GText.h \
+		GPrintable.h \
+		GLocation.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o GXmlValidatorImpl.o GXmlValidatorImpl.cpp
 
 ####### Install
