@@ -15,12 +15,8 @@
 #include <memory>
 #include <algorithm>
 
-#include <utilities/GSystem.h>
-#include <exception/GException.h>
-#include <logging/LLogging.h>
-#include <exception/GException.h>
-
-
+#include <stack>
+#include <sys/stat.h>
 
 
 void 
@@ -42,6 +38,9 @@ TestGXmlClassFactory::~TestGXmlClassFactory()
 {
 }
 
+
+
+/*
 TEST_F(TestGXmlClassFactory, CreateStreamWriter)
 {
 	try
@@ -62,10 +61,6 @@ TEST_F(TestGXmlClassFactory, CreateStreamWriter)
 	xmlWriter->WriteEndTag();
 	delete xmlWriter;
 	}
-	catch(GException &e)
-	{
-		CERR << e.what() << endl;
-	}
 	catch(std::exception &e)
 	{
 		CERR << e.what() << endl;
@@ -76,7 +71,13 @@ TEST_F(TestGXmlClassFactory, CreateStreamWriter)
 	}
 
 }
+*/
 
+
+
+
+
+/*
 TEST_F(TestGXmlClassFactory, CreateStreamReader)
 {
 	try
@@ -98,6 +99,7 @@ TEST_F(TestGXmlClassFactory, CreateStreamReader)
 	};
 
 
+
 	std::string exedir =  g_system()->GetExeDir();
 	
 	/// FORCE_DEBUG("EXEC DIR = %s", exedir.c_str() );
@@ -108,9 +110,6 @@ TEST_F(TestGXmlClassFactory, CreateStreamReader)
 	std::string configFilePath = exedir + "/../../../../config/config.xml";
 	#endif
 	
-
-	G_DEBUG("using config path: %s", configFilePath.c_str());
-
 
 	std::shared_ptr<GXmlStreamReader> xmlReader = GXmlClassFactory::CreateStreamReaderSmartPtr(configFilePath);
 	std::shared_ptr<GXmlNode> node(xmlReader->ReadNode());
@@ -231,6 +230,7 @@ TEST_F(TestGXmlClassFactory, CreateStreamReader)
 	 {
 	 	CERR << e.what() << endl;
 	 }
+
 	 catch(std::exception &e)
 	 {
 	 	CERR << e.what() << endl;
@@ -240,3 +240,6 @@ TEST_F(TestGXmlClassFactory, CreateStreamReader)
 	 	CERR << "UNKNOWN exception caught" << endl;
 	 }
 }
+
+
+*/

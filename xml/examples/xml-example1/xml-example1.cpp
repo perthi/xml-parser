@@ -13,18 +13,8 @@
 #include <xml/GXmlStreamReader.h>
 #include <xml/GXmlValidator.h>
 //#include <iostream>
-#include <utilities/GSystem.h>
-#include <exception/GException.h>
-#include <configuration/KFXMLParser.h>
-#include <configuration/KFXMLParserHMI.h>
-#include <configuration/KFXMLWriter.h>
-#include <configuration/KFEntityCamera.h>
-#include <configuration/KFConfigCamera.h>
-#include  <xml/GXmlDataTypes.h>
 
-#include <logging/LLogApi.h>
-
-using namespace LOGMASTER;
+//#include  <xml/GXmlDataTypes.h>
 
 
 #include <vector>
@@ -33,27 +23,15 @@ using std::vector;
 #include <memory>
  
 
-#include <configuration/KFXMLParserDevices.h>
 
+////void parse(XMLFile_t file_xml, XSDFile_t file_xsd);
 
-void parse(XMLFile_t file_xml, XSDFile_t file_xsd);
-
-
-#include<configuration/KFEntityHMI.h>
-#include <configuration/KFEntityHMICRing.h>
-
-#include  <configuration/KFEntityDevice.h>
-#include  <configuration/KFEntityDeviceSolenoid.h>
 
 
 int main()
 {
-//	static_assert(std::is_base_of<KFEntityHMI,KFEntityHMICRing >::value, "KFEntityHMICRing must inherit from  KFEntityHMI ");	
-//	static_assert(std::is_base_of<KFEntityDevice,  KFEntityDeviceSolenoid >::value, "KFEntityDevice must inherit from  KFEntityDeviceSolenoid ");	
-	//static_assert(std::is_base_of<KFEntityDevice, KFEntityHMICRing  >::value, "KFEntityDevice must inherit from  KFEntityDeviceSolenoid ");	
-//	static_assert(std::is_base_of<A, B>::value, "T must inherit from KFEntityDeviceSensor");	
 
-
+	/*
 //	SET_LOGLEVEL("--all-info");
 	SET_LOGFORMAT("10001111");
 	KFXMLParserHMI* p = new KFXMLParserHMI();
@@ -118,15 +96,10 @@ int main()
 
 	POP();
 
+
+	*/
 //	delete r;
 	return 0;
 }
 
 
-void parse(XMLFile_t file_xml, XSDFile_t file_xsd)
-{
-	///KFXMLParserDevices* parser = new KFXMLParserDevices();
-	KFXMLParserHMI* parser = new KFXMLParserHMI();
-	parser->ParseXML(file_xml, file_xsd);
-	delete parser;
-}

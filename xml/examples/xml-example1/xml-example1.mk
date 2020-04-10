@@ -2,8 +2,7 @@
 PROGRAM:=xml-example1
 
 
-SRCCPP:=xml-example1.cpp \
-	GVersion.cpp
+SRCCPP:=xml-example1.cpp
 
 
 LIBS+= -lcmdline   -llogmaster  -lcontrol-engine -lconfiguration -lxml-embc   -lxml2 -lutilities -lreadline -lcommon 
