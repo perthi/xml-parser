@@ -1,13 +1,10 @@
 
 
 PROGRAM:=xml-validator
-
-SRCCPP+=../xml-validator.cpp \
-	GVersion.cpp \
-	GVersionMenu.cpp
+SRCCPP+=../xml-validator.cpp
 
 
-LIBS+= -lxml-embc  -lxml2 -llogmaster -lutilities  -lcmdline  -lexception -lreadline
+LIBS+= -lxml-embc  -lxml2 
 
 
 include ../../../common.mk
