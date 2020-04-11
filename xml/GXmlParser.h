@@ -8,9 +8,7 @@
 * for Semcon Norge AS                              *
 ****************************************************/
 
-
 #pragma once
-
 
 #include  <xml/GXmlNode.h>
 #include  <xml/GXmlStreamReader.h>
@@ -20,8 +18,6 @@
 #include "GXmlParser.h"
 #include "GXmlMacros.h"
 #include "GCommon.h"
-#include "GDefinitions.h"
-
 #include <stdio.h>
 #include <string.h>
 
@@ -36,6 +32,13 @@ using std::map;
 using std::vector;
 
 class GXmlEntity;
+
+#ifdef HAS_LOGGING
+#include <logging/LLogApi.h>
+#include <exception/GException.h>
+using namespace LOGMASTER;
+#endif
+
 
 class GXmlParser
 {
@@ -124,7 +127,7 @@ GXmlParser::GetTagValue( std::shared_ptr<GXmlStreamReader> xmlReader, const stri
 
 	
 
-	XML_ASSERT_EXCEPTION( node != nullptr,  "  xmlReader->ReadNode() returned a ZERO POINTER !!!", GLOCATION );
+	XML_ASSERT( node != nullptr,  "  xmlReader->ReadNode() returned a ZERO POINTER !!!", GLOCATION );
 
 	if( node->GetType()  == eXML_NODETYPE::ESingleTagNode)
 	{
@@ -138,7 +141,7 @@ GXmlParser::GetTagValue( std::shared_ptr<GXmlStreamReader> xmlReader, const stri
 		 return "";
 	}
 
-	XML_ASSERT_EXCEPTION( node->GetType() == eXML_NODETYPE::EOpenTagNode, 
+	XML_ASSERT( node->GetType() == eXML_NODETYPE::EOpenTagNode, 
 	GText("Unexpcted node type %d (name = %s, type = %s, value = %s)", 
 	                 node->GetType(), 
 					 node->GetName().c_str(),   
@@ -146,7 +149,7 @@ GXmlParser::GetTagValue( std::shared_ptr<GXmlStreamReader> xmlReader, const stri
 					 node->GetValue().c_str() ).str() , GLOCATION ) ;
 	
 	string name = node->GetName();
-	XML_ASSERT_EXCEPTION(node->GetName() == tagname, 
+	XML_ASSERT(node->GetName() == tagname, 
 	GText( "expected %s, got %s (type = %s)", tagname.c_str(), node->GetName().c_str(),  Enum2String( node->GetType()).c_str()  ).str(), GLOCATION );
 	
 	
@@ -225,7 +228,7 @@ GXmlParser::String2Enum(const string hash, std::map<string, T>* m)
 {
 	auto it = m->find(hash);
 
-	XML_ASSERT_EXCEPTION(it != m->end(), 
+	XML_ASSERT(it != m->end(), 
 	GText( "could not find enum for hash tag %s, \n legal values are: %s", hash.c_str(), Hash2String(m).c_str()).str() ,
 	GLOCATION ) ;
 	

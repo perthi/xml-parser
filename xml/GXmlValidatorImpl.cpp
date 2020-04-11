@@ -22,9 +22,13 @@
 #include <libxml/encoding.h>
 #include <libxml/xmlwriter.h>
 
+#ifdef HAS_LOGGING
+#include <exception/GException.h>
+#endif
+
 bool GXmlValidatorImpl::fHasError = false;
 
-// DoError and DoWarning cannot print correct source code correct. Thats why we use this hack.
+
 #define SETPOS() { location = GLocation(__FILE__, __LINE__, __func__); }
 
 static void schemaParseErrorHandler(void *ctx, xmlErrorPtr error)
@@ -36,30 +40,8 @@ static void schemaParseErrorHandler(void *ctx, xmlErrorPtr error)
 	                                  error->message, error->code, __func__, __LINE__  ).str(),   GLocation(error->file, error->line,  "" ), DISABLE_EXCEPTION    );
 
 	g_common()->HandleError(  GText( "%s line %d contains error(s)  !!!!!!!!",  __func__, __LINE__  ).str(),   GLocation(error->file, error->line,  "" ), DISABLE_EXCEPTION    );
-//	LLogging::Instance()->Log(loglevel, eMSGSYSTEM::SYS_GENERAL, GLocation(error->file, error->line,  ""  ), "Offending file: %s (error code %d) (from %s line[%d])",
-//	error->message, error->code, __func__, __LINE__  );
-///	LLogging::Instance()->Log(loglevel, eMSGSYSTEM::SYS_GENERAL, GLocation(error->file, error->line,  ""  ), "%s line %d contains error(s)  !!!!!!!!",  error->file, error->line );
 	GXmlValidatorImpl::SetError(true);
 }
-
-
-// typedef struct _xmlError xmlError;
-// typedef xmlError *xmlErrorPtr;
-// struct _xmlError {
-//     int		domain;	/* What part of the library raised this error */
-//     int		code;	/* The error code, e.g. an xmlParserError */
-//     char       *message;/* human-readable informative error message */
-//     xmlErrorLevel level;/* how consequent is the error */
-//     char       *file;	/* the filename */
-//     int		line;	/* the line number if available */
-//     char       *str1;	/* extra string information */
-//     char       *str2;	/* extra string information */
-//     char       *str3;	/* extra string information */
-//     int		int1;	/* extra number information */
-//     int		int2;	/* error column # or 0 if N/A (todo: rename field when we would brk ABI) */
-//     void       *ctxt;   /* the parser context if available */
-//     void       *node;   /* the node in the tree */
-// };
 
 
 
@@ -128,19 +110,19 @@ GXmlValidatorImpl::IsValid(std::string xmlFilename, std::string xsdFilename)
 
 		
 
-		XML_ASSERT_EXCEPTION(schema != nullptr, "Could not parse xmlSchemaPtr", GLOCATION ) ;
+		XML_ASSERT(schema != nullptr, "Could not parse xmlSchemaPtr", GLOCATION ) ;
 
 		xmlSetGenericErrorFunc(&location, DoError );
 
 		SETPOS(); xmlDocPtr doc = xmlReadFile(xmlFilename.c_str(), nullptr, 0);
 
-	    XML_ASSERT_EXCEPTION(doc != nullptr,  GText( "Could not parse %s", xmlFilename.c_str() ).str(), GLOCATION );
+	    XML_ASSERT(doc != nullptr,  GText( "Could not parse %s", xmlFilename.c_str() ).str(), GLOCATION );
        
 
 		SETPOS(); xmlSchemaValidCtxtPtr ctxt = xmlSchemaNewValidCtxt(schema);
 		xmlSchemaSetValidStructuredErrors(ctxt, schemaParseErrorHandler, &has_schema_errors);
-		XML_ASSERT_EXCEPTION ( has_schema_errors == false, "XML ore XSD contains errors", GLOCATION );
-		XML_ASSERT_EXCEPTION (ctxt != nullptr, "Could not Create", GLOCATION );
+		XML_ASSERT ( has_schema_errors == false, "XML ore XSD contains errors", GLOCATION );
+		XML_ASSERT (ctxt != nullptr, "Could not Create", GLOCATION );
 		//////	xmlSchemaSetValidErrors(ctxt, DoError, DoWarning, &location);
 
 		SETPOS(); int ret = xmlSchemaValidateDoc(ctxt, doc);
@@ -154,7 +136,7 @@ GXmlValidatorImpl::IsValid(std::string xmlFilename, std::string xsdFilename)
 		xmlSchemaFreeValidCtxt(ctxt);
 
 		xmlFreeDoc(doc);
-		XML_ASSERT_EXCEPTION( ret >= 0,  GText( "%s validation generated an internal error", xmlFilename.c_str() ).str(), GLOCATION  );
+		XML_ASSERT( ret >= 0,  GText( "%s validation generated an internal error", xmlFilename.c_str() ).str(), GLOCATION  );
 
 		return(ret == 0);
 	}

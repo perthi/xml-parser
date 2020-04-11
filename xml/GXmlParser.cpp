@@ -56,7 +56,7 @@ GXmlParser::AssertTag(std::shared_ptr<GXmlStreamReader> xmlReader, const string 
 		node = xmlReader->ReadNode();
 	}
 
-	XML_ASSERT_EXCEPTION(node != nullptr, "node is a ZERO pointer", l);
+	XML_ASSERT(node != nullptr, "node is a ZERO pointer", l);
 
 	eXML_NODETYPE node_type_l = node->GetType();
 	string tag_l =  node->GetName();
@@ -64,11 +64,13 @@ GXmlParser::AssertTag(std::shared_ptr<GXmlStreamReader> xmlReader, const string 
 	#ifdef HAS_LOGGING
 	if( tag_l != tag )
 	{
-		throw( GEngineException( l.fFileName,l.fFunctName, l.fLineNo, eMSGSYSTEM::SYS_XML, "Unexpected node type(%s), expected %s, got %s",  Enum2String(node_type).c_str(),  tag.c_str(),  tag_l.c_str() ) );
+		throw( GEngineException( l.fFileName,l.fFunctName, l.fLineNo, eMSGSYSTEM::SYS_XML, 
+		"Unexpected node type(%s), expected %s, got %s",  Enum2String(node_type).c_str(),  tag.c_str(),  tag_l.c_str() ) );
 	}
 	else if( node_type != node_type_l )
 	{
-		throw( GEngineException( l.fFileName,l.fFunctName, l.fLineNo, eMSGSYSTEM::SYS_XML, "Unexpected tag, expected %s, got %s", *node_type, *node_type_l ) );
+		throw( GEngineException( l.fFileName,l.fFunctName, l.fLineNo, eMSGSYSTEM::SYS_XML, 
+		"Unexpected tag, expected %s, got %s",  Enum2String(node_type).c_str(), Enum2String(node_type_l).c_str() ) );
 	}
 
 	#else
@@ -95,7 +97,8 @@ GXmlParser::PrinttAttributes( const GXmlNode * const node,  GLocation l)
 	auto type = node->GetType();
 	
 	#ifdef HAS_LOGGING
-	LLogging::Instance()->Log(  eMSGLEVEL::LOG_INFO, eMSGSYSTEM::SYS_XML, l,  "tag = %s, type = %s, attributes.size() = %d", name.c_str(), *type, a.size() );
+	LLogging::Instance()->Log(  eMSGLEVEL::LOG_INFO, eMSGSYSTEM::SYS_XML, l,  
+	"tag = %s, type = %s, attributes.size() = %d", name.c_str(),  Enum2String(type).c_str(), a.size() );
 
 	for(size_t i =0; i < a.size(); i++ )
 	{

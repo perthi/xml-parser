@@ -29,11 +29,14 @@
 #include  "GCommon.h"
 
 #include "GDefinitions.h"
-#include "GLocation.h"
+////#include "GLocation.h"
 
 #ifdef HAS_LOGGING
 #include <logging/LLogApi.h>
+#include <logging/GLocation.h>
 using namespace LOGMASTER;
+#else
+#include <utilities/GLocation.h>
 #endif
 
 #include <iostream>
