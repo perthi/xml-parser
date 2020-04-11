@@ -12,10 +12,11 @@
 *** General Public License(LGPL) V3 or later.See.cpp file for details     ***
 *****************************************************************************/
 
+#include  <xml/GDefinitions.h>
+
 #include <string>
 using std::string;
 #include <typeinfo>
-#include "GDefinitions.h"
 
 #define GLOCATION  GLocation(__FILE__, __LINE__, __FUNCTION__)
 

@@ -18,9 +18,9 @@
 #include "GXmlCDataNode.h"
 
 
-#include "GCommon.h"
-#include "GText.h"
-#include "GLocation.h"
+#include  <xml/GCommon.h>
+#include  <xml/GText.h>
+#include <xml/GLocation.h>
 
 #include <libxml/xmlreader.h>
 

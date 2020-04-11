@@ -7,14 +7,14 @@
 
 #pragma once
 #include "GXmlNodeImpl.h"
-#include <string>
-
 #include "GXmlEnums.h"
 
+#include <string>
+using std::string;
 
 class GXmlCDataNode : public GXmlNodeImpl
 {
 public:
-	GXmlCDataNode(const std::string& value);
+	GXmlCDataNode(const string& value);
 	virtual eXML_NODETYPE GetType() const override;
 };

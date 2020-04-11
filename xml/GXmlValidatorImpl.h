@@ -10,7 +10,7 @@
 
 #include <string>
 #include <libxml/xmlerror.h>
-#include "GDefinitions.h"
+#include <xml/GDefinitions.h>
 
 #include "LEnums.h"
 

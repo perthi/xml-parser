@@ -9,14 +9,12 @@
 *** General Public License (LGPL) V3 or later. See .cpp file for details ***
 *****************************************************************************/
 
-#pragma once
+#include <xml/GDefinitions.h>
+#include <xml/GPrintable.h>
 
 #include <string>
 using std::string;
 #include <stdint.h>
-#include "GDefinitions.h"
-#include "GPrintable.h"
-
 
 /** @brief Generate a text object using printf formatting */
 class GText : public GPrintable

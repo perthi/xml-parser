@@ -10,7 +10,7 @@
 #ifndef GXMLCLASSFACTORY_H
 #define GXMLCLASSFACTORY_H
 
-#include "GDefinitions.h"
+#include <xml/GDefinitions.h>
 #include <string>
 #include <memory>
 

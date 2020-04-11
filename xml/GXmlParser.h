@@ -17,7 +17,7 @@
 
 #include "GXmlParser.h"
 #include "GXmlMacros.h"
-#include "GCommon.h"
+#include  <xml/GCommon.h>
 #include <stdio.h>
 #include <string.h>
 

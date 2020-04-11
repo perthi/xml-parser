@@ -1,7 +1,7 @@
 
 
-#include  "GCommon.h"
-#include  "GText.h"
+#include  <xml/GCommon.h>
+#include  <xml/GText.h>
 
 #ifdef HAS_LOGGING
 #include  <utilities/GLocation.h>
