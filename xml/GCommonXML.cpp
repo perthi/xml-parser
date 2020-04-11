@@ -57,15 +57,17 @@ GCommonXML * g_common_xml()
 void
 GCommonXML::HandleError(const string message, const GLocation  l,   const bool   disable_exception  )
 {
-    FORCE_DEBUG("l = %s", l.c_str()  );
+  //  FORCE_DEBUG("l = %s", l.c_str()  );
 
     if ( disable_exception == false)
     {
+        FORCE_DEBUG("l = %s", l.c_str()  );
         throw_exception(   GException(l.fFileName, l.fFunctName, l.fLineNo, eMSGSYSTEM::SYS_EX, "%s", message.c_str( ))  )  ;
     }
     else
     {
-        G_WARNING(message.c_str());
+        FORCE_DEBUG("l = %s", l.c_str()  ); 
+        XML_ERROR( (message  + string ( l.c_str() ) ).c_str()  );
     }
 }
 
