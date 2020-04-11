@@ -30,7 +30,5 @@ SRCCPP+= GXmlAttribute.cpp \
 	GXmlEntity.cpp
 
 
-CPPFLAGS:=$(CPPFLAGS_RELAXED)
-
 INCLUDES+=$(XML_INCLUDES)
 include ../../common.mk
