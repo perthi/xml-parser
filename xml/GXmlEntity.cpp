@@ -7,26 +7,19 @@
 * for Semcon Norge AS                              *
 ***************************************************/
 
-#include "KFEntity.h"
+
+#include "GXmlEntity.h"
+#include <utilities/GUtilities.h>
 #include <iostream>
 
-#include <utilities/GUtilities.h>
 
-KFEntity::KFEntity()
+GXmlEntity::GXmlEntity()
 {
 
 }
 
-KFEntity::~KFEntity()
+GXmlEntity::~GXmlEntity()
 {
 
 }
 
-// string 
-// KFEntityDevice::str() const
-// {
-// 	std::stringstream buffer;
-// 	buffer << fAddress.str();
-// 	buffer << g_utilities()->TabAlign("DEVICE_TYPE:") << fDeviceTypeS  <<  " (" << (int)fDeviceType << ")" << endl;
-// 	return buffer.str();
-// }

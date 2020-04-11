@@ -17,10 +17,11 @@
 #include  <xml/GXmlAttribute.h>
 #include  <xml/GString2Number.h>
 
-
 #include "GXmlParser.h"
 #include "GXmlMacros.h"
 #include "GCommon.h"
+#include "GDefinitions.h"
+
 #include <stdio.h>
 #include <string.h>
 
@@ -34,20 +35,18 @@ using std::map;
 #include <vector>
 using std::vector;
 
-///struct KFEntity;
+class GXmlEntity;
 
 class GXmlParser
 {
 public:
     API GXmlParser();
     API virtual ~GXmlParser();
-
-	virtual  vector< std::shared_ptr<KFEntity> > API ParseXML(const string  /*xml*/, const string  /*xsd*/ )  = 0;
-
-	template<typename T>
-	inline T String2Enum(const string hash, std::map<string, T>*);
-
+	virtual  vector< std::shared_ptr<GXmlEntity> > API ParseXML(const string  /*xml*/, const string  /*xsd*/ )  = 0;
 	inline string  Enum2String( eXML_NODETYPE );
+
+    template<typename T>
+	inline T String2Enum(const string hash, std::map<string, T>*);
 
 protected:
 	template<typename T = string>
@@ -61,14 +60,13 @@ protected:
 
 	void   AssertTagOpenGroup(std::shared_ptr<GXmlStreamReader> xmlReader, const string, GLocation l, const bool read_node = true );
 	void   AssertTagCloseGroup(std::shared_ptr<GXmlStreamReader> xmlReader, const string, GLocation l,  const bool read_node = true  );
-	// bool   AssertOptionalTagGroup(std::shared_ptr<GXmlStreamReader> xmlReader, const string, GLocation l, eXML_NODETYPE node_type );
 	void   AssertTag(std::shared_ptr<GXmlStreamReader> xmlReader, const string, GLocation l, eXML_NODETYPE node_type, const bool read_node = true  );
 	void   PrinttAttributes( const GXmlNode * const node , GLocation l );
 	bool   HasAttributes(  const GXmlNode * const node ) const;
 
   	template < typename T>    string Hash2String( const map< string, T>   *m, const int ncols = 8, const string sep = "");
-
 };
+
 
 
 inline string

@@ -17,10 +17,10 @@ using std::string;
 #include <utilities/GDefinitions.h>
 
 
-struct  KFEntity : public GPrintable
+struct  GXmlEntity : public GPrintable
 {
-	API KFEntity();
-	virtual API ~KFEntity();
+	API GXmlEntity();
+	virtual API ~GXmlEntity();
 	virtual  string API str() const override = 0;
 
 
