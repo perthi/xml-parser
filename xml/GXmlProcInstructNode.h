@@ -17,4 +17,5 @@ public:
 	GXmlProcInstructNode(const std::string& target, const std::string& content);
 
 	virtual eXML_NODETYPE GetType() const override;
+	virtual string GetTypeS() const override;
 };

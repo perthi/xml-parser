@@ -16,4 +16,5 @@ class GXmlTextNode : public GXmlNodeImpl
 public:
 	GXmlTextNode(const std::string& text);
 	virtual eXML_NODETYPE GetType() const override;
+	virtual string GetTypeS() const override;
 };

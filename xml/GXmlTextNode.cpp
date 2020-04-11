@@ -6,7 +6,7 @@
 ******************************************************/
 
 #include "GXmlTextNode.h"
-
+#include "GXmlEnum2String.h"
 
 GXmlTextNode::GXmlTextNode(const std::string& text)
 	: GXmlNodeImpl("", text)
@@ -16,4 +16,10 @@ GXmlTextNode::GXmlTextNode(const std::string& text)
 eXML_NODETYPE GXmlTextNode::GetType() const
 {
 	return eXML_NODETYPE::ETextNode;
+}
+
+
+string GXmlTextNode::GetTypeS() const
+{
+	return  GXmlEnum2String::Enum2String ( eXML_NODETYPE::ETextNode );
 }

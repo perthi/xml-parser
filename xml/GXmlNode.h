@@ -13,6 +13,11 @@
 #include <vector>
 #include "GXmlEnums.h"
 
+#include <string>
+
+using std::string;
+
+
 
 /** @brief A Generic node interface
  *  @details An XML document looks something like this 
@@ -40,6 +45,7 @@ public:
 	virtual ~GXmlNode() {};
 
 	API virtual eXML_NODETYPE GetType() const = 0; /*!< Get type of node */
+	API virtual string GetTypeS() const = 0; /*!< Get type of node */
 	API virtual std::string GetName() const = 0; /*!< Get name of node, includes namespace */
 	API virtual std::string GetValue() const = 0; /*!< Get value of node */
 	API virtual std::vector<GXmlAttribute> GetAttributes() const = 0; /*!< Get attributes, empty if there are no attributes */

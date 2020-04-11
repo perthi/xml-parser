@@ -16,7 +16,7 @@
 
 #include "GXmlParser.h"
 
-
+#include "GXmlEnum2String.h"
 
 GXmlParser::GXmlParser()
 {
@@ -65,22 +65,22 @@ GXmlParser::AssertTag(std::shared_ptr<GXmlStreamReader> xmlReader, const string 
 	if( tag_l != tag )
 	{
 		throw( GEngineException( l.fFileName,l.fFunctName, l.fLineNo, eMSGSYSTEM::SYS_XML, 
-		"Unexpected node type(%s), expected %s, got %s",  Enum2String(node_type).c_str(),  tag.c_str(),  tag_l.c_str() ) );
+		"Unexpected node type(%s), expected %s, got %s",  ToCharPtr(node_type),  tag.c_str(),  tag_l.c_str() ) );
 	}
 	else if( node_type != node_type_l )
 	{
 		throw( GEngineException( l.fFileName,l.fFunctName, l.fLineNo, eMSGSYSTEM::SYS_XML, 
-		"Unexpected tag, expected %s, got %s",  Enum2String(node_type).c_str(), Enum2String(node_type_l).c_str() ) );
+		"Unexpected tag, expected %s, got %s",  ToCharPtr(node_type), ToCharPtr(node_type_l) ) );
 	}
 
 	#else
 	if( tag_l != tag )
 	{
-		g_common()->HandleError(   GText( "Unexpected node type(%s), expected %s, got %s",  Enum2String(node_type).c_str(),  tag.c_str(),  tag_l.c_str() ).str(), l, THROW_EXCEPTION    );
+		g_common_xml()->HandleError(   GText( "Unexpected node type(%s), expected %s, got %s",  ToCharPtr(node_type),  tag.c_str(),  tag_l.c_str() ).str(), l, THROW_EXCEPTION    );
 	}
 	else if( node_type != node_type_l )
 	{
-		g_common()->HandleError(   GText(  "Unexpected tag, expected %s, got %s",  Enum2String(node_type).c_str(), Enum2String(node_type_l).c_str() ).str(), l, THROW_EXCEPTION    );
+		g_common_xml()->HandleError(   GText(  "Unexpected tag, expected %s, got %s",  ToCharPtr(node_type), ToCharPtr(node_type_l) ).str(), l, THROW_EXCEPTION    );
 	}
 
 	#endif
@@ -98,7 +98,7 @@ GXmlParser::PrinttAttributes( const GXmlNode * const node,  GLocation l)
 	
 	#ifdef HAS_LOGGING
 	LLogging::Instance()->Log(  eMSGLEVEL::LOG_INFO, eMSGSYSTEM::SYS_XML, l,  
-	"tag = %s, type = %s, attributes.size() = %d", name.c_str(),  Enum2String(type).c_str(), a.size() );
+	"tag = %s, type = %s, attributes.size() = %d", name.c_str(),  ToCharPtr(type), a.size() );
 
 	for(size_t i =0; i < a.size(); i++ )
 	{
@@ -107,7 +107,7 @@ GXmlParser::PrinttAttributes( const GXmlNode * const node,  GLocation l)
 	}
 
 	#else
-	COUT << l.str() << ":" << GText(   "tag = %s, type = %s, attributes.size() = %d", name.c_str(),  Enum2String(type).c_str(), a.size()  ).str()  << endl;	
+	COUT << l.str() << ":" << GText(   "tag = %s, type = %s, attributes.size() = %d", name.c_str(),  ToCharPtr(type), a.size()  ).str()  << endl;	
 	
 	for(size_t i =0; i < a.size(); i++ )
 	{
@@ -124,3 +124,17 @@ GXmlParser::HasAttributes(  const GXmlNode * const node ) const
 	return node->GetAttributes().size() > 0 ? true : false;
 }
 
+
+string
+GXmlParser::ToString( const eXML_NODETYPE type)
+{
+	return GXmlEnum2String::Enum2String(type );
+}
+
+
+const char *
+GXmlParser::ToCharPtr( const eXML_NODETYPE type)
+{
+	return (GXmlEnum2String::Enum2String(type ) ).c_str();
+
+}

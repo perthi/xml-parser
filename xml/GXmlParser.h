@@ -46,10 +46,12 @@ public:
     API GXmlParser();
     API virtual ~GXmlParser();
 	virtual  vector< std::shared_ptr<GXmlEntity> > API ParseXML(const string  /*xml*/, const string  /*xsd*/ )  = 0;
-	inline string  Enum2String( eXML_NODETYPE );
+	
 
     template<typename T>
 	inline T String2Enum(const string hash, std::map<string, T>*);
+
+
 
 protected:
 	template<typename T = string>
@@ -68,50 +70,16 @@ protected:
 	bool   HasAttributes(  const GXmlNode * const node ) const;
 
   	template < typename T>    string Hash2String( const map< string, T>   *m, const int ncols = 8, const string sep = "");
+
+	string ToString( const eXML_NODETYPE type);
+	const char * ToCharPtr( const eXML_NODETYPE type);
+
 };
 
 
 
-inline string
-GXmlParser::Enum2String(  const eXML_NODETYPE type )
-{
-	switch (type )
-	{
-	  case eXML_NODETYPE::EOpenTagNode:
-				return "EOpenTagNode";
-			  break; 
-      case eXML_NODETYPE::ECloseTagNode:
-			return "ECloseTagNode";
-			  break; 
-      case eXML_NODETYPE::ESingleTagNode:
-			return "ESingleTagNode";
-			  break; 
-      case eXML_NODETYPE::ETextNode:
-			return "ETextNode";
-			  break; 
-      case eXML_NODETYPE::ECommentNode:
-			return "ECommentNode";
-			  break; 
-      case eXML_NODETYPE::EProcInstrNode:
-			return "EProcInstrNode";
-			  break; 
-      case eXML_NODETYPE::EDocTypeNode:
-			return "EDocTypeNode";
-			  break; 
-      case eXML_NODETYPE::ECDataNode:
-			return "ECDataNode";
-			break;
-		case eXML_NODETYPE::UNKNOWN :
-			return "UNKNOWN";
-			break;	
-	default:
-		std::stringstream buffer;
-		buffer << 	"Type not" << (int)type << "reckognized";
-		return  buffer.str();	
-		break;
-	}
 
-}
+
 
 
 template<typename T>
@@ -148,12 +116,12 @@ GXmlParser::GetTagValue( std::shared_ptr<GXmlStreamReader> xmlReader, const stri
 	GText("Unexpcted node type %d (name = %s, type = %s, value = %s)", 
 	                 node->GetType(), 
 					 node->GetName().c_str(),   
-					 Enum2String(node->GetType()).c_str(),  
+					 ToCharPtr(node->GetType()) ,  
 					 node->GetValue().c_str() ).str() , GLOCATION ) ;
 	
 	string name = node->GetName();
 	XML_ASSERT(node->GetName() == tagname, 
-	GText( "expected %s, got %s (type = %s)", tagname.c_str(), node->GetName().c_str(),  Enum2String( node->GetType()).c_str()  ).str(), GLOCATION );
+	GText( "expected %s, got %s (type = %s)", tagname.c_str(), node->GetName().c_str(),  ToCharPtr( node->GetType())  ).str(), GLOCATION );
 	
 	
 	node =  xmlReader->ReadNode();

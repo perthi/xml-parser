@@ -16,4 +16,5 @@ class GXmlCommentNode : public GXmlNodeImpl
 public:
 	GXmlCommentNode(const std::string& comment);
 	virtual eXML_NODETYPE GetType() const override;
+	virtual string GetTypeS() const override;
 };

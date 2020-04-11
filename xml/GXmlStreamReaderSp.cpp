@@ -6,6 +6,7 @@
 ******************************************************/
 
 #include "GXmlStreamReaderSp.h"
+#include "GXmlEnum2String.h"
 
 GXmlNodeSp::GXmlNodeSp(GXmlNode* data)
 {
@@ -26,6 +27,11 @@ GXmlNodeSp& GXmlNodeSp::operator=(const GXmlNodeSp& rhs)
 eXML_NODETYPE GXmlNodeSp::GetType() const
 {
 	return(fData->GetType());
+}
+
+string GXmlNodeSp::GetTypeS() const
+{
+	return   GXmlEnum2String::Enum2String ( fData->GetType( )) ;
 }
 
 std::string GXmlNodeSp::GetName() const

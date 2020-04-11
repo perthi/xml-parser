@@ -33,6 +33,7 @@ public:
 
 	// Inherited via GXmlNode
 	virtual API eXML_NODETYPE GetType() const override;
+	virtual API string GetTypeS() const override;
 	virtual API std::string GetName() const override;
 	virtual API std::string GetValue() const override;
 	virtual API std::vector<GXmlAttribute> GetAttributes() const override;

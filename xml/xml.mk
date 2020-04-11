@@ -27,7 +27,8 @@ SRCCPP+= GXmlAttribute.cpp \
 	GCommonXML.cpp \
 	GXmlParser.cpp \
 	GString2Number.cpp \
-	GXmlEntity.cpp
+	GXmlEntity.cpp \
+	GXmlEnum2String.cpp
 
 
 INCLUDES+=$(XML_INCLUDES)
