@@ -71,26 +71,10 @@ typedef  unsigned char    DBCHAR;
 #endif
 
 
-#define  DAY_MIN 1
-#define  DAY_MAX 7
-#define  DATE_MIN 1
-#define  DATE_MAX 31
-#define  MONTH_MIN 1
-#define  MONTH_MAX 12
-#define  YEAR_MIN 2018
-#define  YEAR_MAX 9999
-#define  HOUR_MIN 0
-#define  HOUR_MAX 24
-#define  MINUTE_MIN 0
-#define  MINUTE_MAX 60
-#define  SECONDS_MIN 0
-#define  SECONDS_MAX 60
-
-
 
 #ifdef HAS_LOGGING
 #include <cmdline/GLogApplication.h>
-#define MAIN_UNITTEST() \
+#define MAIN_UNITTEST_XML() \
 int argc_ = 0; \
 char** argv_ = nullptr; \
 int  main(int argc, char** argv) \
@@ -109,7 +93,7 @@ int  main(int argc, char** argv) \
 } 
 
 #else
-#define MAIN_UNITTEST() \
+#define MAIN_UNITTEST_XML() \
 int  main(int argc, char** argv) \
 { \
 \

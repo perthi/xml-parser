@@ -101,6 +101,9 @@ GXmlParser::Enum2String(  const eXML_NODETYPE type )
       case eXML_NODETYPE::ECDataNode:
 			return "ECDataNode";
 			break;
+		case eXML_NODETYPE::UNKNOWN :
+			return "UNKNOWN";
+			break;	
 	default:
 		std::stringstream buffer;
 		buffer << 	"Type not" << (int)type << "reckognized";
