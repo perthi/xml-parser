@@ -12,30 +12,25 @@
 #include "GXmlNode.h"
 
 #include <libxml/xmlreader.h>
-
 #include <string>
 
 
-/// implementation if GXmlStreamReader
 class GXmlStreamReaderImpl : public GXmlStreamReader
 {
 public:
-	/// Open file and prepare reader.
 	GXmlStreamReaderImpl(const std::string& fileName);
 	virtual ~GXmlStreamReaderImpl();
-
-	/// See documentation for GXmlStreamReader::ReadNode
 	virtual GXmlNode* ReadNode() override;
 	virtual GXmlNode  * GetCurrentNode() override;
 	virtual int  API GetLineNumber()    const  override;
 	virtual int  API GetColumnNumber()  const  override;
 
 private:
+	friend GXmlStreamReader* GXmlClassFactory::CreateStreamReader(const std::string& filename);
+
 	GXmlStreamReaderImpl operator = (const GXmlStreamReaderImpl & );
 	GXmlStreamReaderImpl( const GXmlStreamReaderImpl & );
 
-	/// Allow only the factory to construct objects of this class
-	friend GXmlStreamReader* GXmlClassFactory::CreateStreamReader(const std::string& filename);
 
 	/*! @brief Create a node
 		Allocates a specific node type based on input parameters.
@@ -50,5 +45,5 @@ private:
 	static void  DoError(void *ctx, const char *msg, ...);
 
 	const std::string fFilename;   /*!< Filename (potentially with path) to XML file */
-	xmlTextReaderPtr fReader;      /*!< libxml2 reader */
+	xmlTextReaderPtr fReader = nullptr;      /*!< libxml2 reader */
 };

@@ -22,9 +22,7 @@ GString2Number::~GString2Number()
 double 
 GString2Number::ToNumber( const string num )
 {
-    bool is_number = false;
     std::string::size_type sz = 0;
-
     double d = -9999;
 
     try

@@ -26,7 +26,7 @@ private:
 	// Only the class factory can create this class
 	friend GXmlStreamWriter* GXmlClassFactory::CreateStreamWriter(std::string fileName);
 
-	xmlTextWriterPtr fWriter;
+	xmlTextWriterPtr fWriter = nullptr;
 
 	GXmlStreamWriterImpl();
 	virtual void WriteSingleTag(std::string tag) override;

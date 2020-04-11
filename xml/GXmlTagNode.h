@@ -20,5 +20,5 @@ public:
 
 	void AddAttribute(const GXmlAttribute& attribute);
 private:
-	std::vector<GXmlAttribute> fAttributes;
+	std::vector<GXmlAttribute> fAttributes =  std::vector<GXmlAttribute>();
 };

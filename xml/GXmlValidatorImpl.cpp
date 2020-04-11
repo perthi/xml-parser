@@ -31,9 +31,9 @@ bool GXmlValidatorImpl::fHasError = false;
 
 #define SETPOS() { location = GLocation(__FILE__, __LINE__, __func__); }
 
-static void schemaParseErrorHandler(void *ctx, xmlErrorPtr error)
+static void schemaParseErrorHandler(void *  /*ctx*/, xmlErrorPtr error)
 {
-	eLOGLEVEL loglevel =   GXmlValidatorImpl::ErrorLevel2Loglevel( error->level );
+	///eLOGLEVEL loglevel =   GXmlValidatorImpl::ErrorLevel2Loglevel( error->level );
 	fprintf(stderr, "filename: %s\n", error->file );
 
 	g_common()->HandleError(  GText(  "Offending file: %s (error code %d) (from %s line[%d])",

@@ -99,7 +99,7 @@ GXmlNode* GXmlStreamReaderImpl::ReadNode()
 	while (node == nullptr)
 	{
 
-		const int readerValid = xmlTextReaderIsValid(fReader);
+//		const int readerValid = xmlTextReaderIsValid(fReader);
 		const int returncode = xmlTextReaderRead(fReader);
 
 		if (returncode != 1)
@@ -112,7 +112,7 @@ GXmlNode* GXmlStreamReaderImpl::ReadNode()
 			break;
 		}
 
-		const int depth = xmlTextReaderDepth(fReader);
+//		const int depth = xmlTextReaderDepth(fReader);
 		const xmlChar* name = xmlTextReaderConstName(fReader);
 		const xmlChar* value = xmlTextReaderConstValue(fReader);
 		const int type = xmlTextReaderNodeType(fReader);
