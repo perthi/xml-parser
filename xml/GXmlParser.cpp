@@ -102,7 +102,8 @@ GXmlParser::PrinttAttributes( const GXmlNode * const node,  GLocation l)
 
 	for(size_t i =0; i < a.size(); i++ )
 	{
-		LLogging::Instance()->Log(  eMSGLEVEL::LOG_INFO, eMSGSYSTEM::SYS_XML, l, "Attribute[%d]: name = %s, value = %s", i, a.at(i).GetName().c_str(), a.at(i).GetValue().c_str()  );
+		LLogging::Instance()->Log(  eMSGLEVEL::LOG_INFO, eMSGSYSTEM::SYS_XML, l, 
+		"Attribute[%d]: name = %s, value = %s", i, a.at(i).GetName().c_str(), a.at(i).GetValue().c_str()  );
 	}
 
 	#else
