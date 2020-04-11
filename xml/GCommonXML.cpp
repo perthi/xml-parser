@@ -26,7 +26,7 @@
 ******************************************************************************
 ******************************************************************************/
 
-#include  <xml/GCommon.h>
+#include  <xml/GCommonXML.h>
 #include <xml/GDefinitions.h>
 
 
@@ -46,23 +46,19 @@ using std::cerr;
 
 
 
-GCommon * g_common()
+GCommonXML * g_common_xml()
 {
-	static GCommon *instance = new GCommon();
+	static GCommonXML *instance = new GCommonXML();
 	return instance;
 }
 
 
-
-
-
-
-
-
 #ifdef HAS_LOGGING
 void
-GCommon::HandleError(const string message, const GLocation  l,   const bool   disable_exception  )
+GCommonXML::HandleError(const string message, const GLocation  l,   const bool   disable_exception  )
 {
+    FORCE_DEBUG("l = %s", l.c_str()  );
+
     if ( disable_exception == false)
     {
         throw_exception(   GException(l.fFileName, l.fFunctName, l.fLineNo, eMSGSYSTEM::SYS_EX, "%s", message.c_str( ))  )  ;
@@ -76,7 +72,7 @@ GCommon::HandleError(const string message, const GLocation  l,   const bool   di
 #else
 
 void
-GCommon::HandleError(const string message, const GLocation l, const bool   disable_exception  )
+GCommonXML::HandleError(const string message, const GLocation l, const bool   disable_exception  )
 {
     if ( disable_exception == false)
     {

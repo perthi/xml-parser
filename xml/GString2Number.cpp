@@ -46,7 +46,7 @@ GString2Number::ToNumber( const string num )
     }
     catch (const std::exception &e)
     {
-        g_common()->HandleError( GText("exection caught trying to convert \"%s\" to a number ", num.c_str()  ).str() , GLOCATION, THROW_EXCEPTION );
+        g_common_xml()->HandleError( GText("exection caught trying to convert \"%s\" to a number ", num.c_str()  ).str() , GLOCATION, THROW_EXCEPTION );
         return d;
     
     }

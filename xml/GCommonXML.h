@@ -19,26 +19,26 @@
 using std::string;
 
 
-class GCommon;
+class GCommonXML;
 class GLocation;
 
-GCommon * g_common();
+GCommonXML * g_common_xml();
 
 #define DISABLE_EXCEPTION true
 #define THROW_EXCEPTION  false
 
 
 /** @brief Some common global defines and functions */
-class GCommon
+class GCommonXML
 {
-	friend    GCommon * g_common();
+	friend    GCommonXML * g_common_xml();
 
 public:
 	void  HandleError(const string message, const GLocation l, const bool disable_error );
 
 private:
-	GCommon() {};
-	~GCommon() {};
+	GCommonXML() {};
+	~GCommonXML() {};
 
 };
 

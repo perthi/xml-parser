@@ -17,7 +17,7 @@
 
 #include "GXmlParser.h"
 #include "GXmlMacros.h"
-#include  <xml/GCommon.h>
+#include  <xml/GCommonXML.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -134,7 +134,7 @@ GXmlParser::GetTagValue( std::shared_ptr<GXmlStreamReader> xmlReader, const stri
 
 	if( node->GetType()  == eXML_NODETYPE::ESingleTagNode)
 	{
-		g_common()->HandleError( GText( "%s is a single tag node (with no value) !!", tagname.c_str() ).str(), GLOCATION, DISABLE_EXCEPTION );
+		g_common_xml()->HandleError( GText( "%s is a single tag node (with no value) !!", tagname.c_str() ).str(), GLOCATION, DISABLE_EXCEPTION );
 		vector<GXmlAttribute> tmp =  node->GetAttributes();
 
 		// for (size_t i = 0; i < tmp.size(); i++)
@@ -207,7 +207,7 @@ GXmlParser::GetTagValue( std::shared_ptr<GXmlStreamReader> xmlReader, const stri
 	}
 	else
 	{
-		g_common()->HandleError(  GText(  "unexpected value for boolean %s, expected either \"true\" or \"false\"",  tmp.c_str() ).str(), GLOCATION, THROW_EXCEPTION  );
+		g_common_xml()->HandleError(  GText(  "unexpected value for boolean %s, expected either \"true\" or \"false\"",  tmp.c_str() ).str(), GLOCATION, THROW_EXCEPTION  );
 	}
 
 	return false;

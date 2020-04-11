@@ -6,9 +6,6 @@
 ******************************************************/
 
 #include "GXmlValidatorImpl.h"
-//#include "GCommon.h"
-//#include "GLocation.h"
-//#include "GText.h"
 #include "LEnums.h"
 #include "GXmlMacros.h"
 
@@ -36,10 +33,10 @@ static void schemaParseErrorHandler(void *  /*ctx*/, xmlErrorPtr error)
 	///eLOGLEVEL loglevel =   GXmlValidatorImpl::ErrorLevel2Loglevel( error->level );
 	fprintf(stderr, "filename: %s\n", error->file );
 
-	g_common()->HandleError(  GText(  "Offending file: %s (error code %d) (from %s line[%d])",
+	g_common_xml()->HandleError(  GText(  "Offending file: %s (error code %d) (from %s line[%d])",
 	                                  error->message, error->code, __func__, __LINE__  ).str(),   GLocation(error->file, error->line,  "" ), DISABLE_EXCEPTION    );
 
-	g_common()->HandleError(  GText( "%s line %d contains error(s)  !!!!!!!!",  __func__, __LINE__  ).str(),   GLocation(error->file, error->line,  "" ), DISABLE_EXCEPTION    );
+	g_common_xml()->HandleError(  GText( "%s line %d contains error(s)  !!!!!!!!",  __func__, __LINE__  ).str(),   GLocation(error->file, error->line,  "" ), DISABLE_EXCEPTION    );
 	GXmlValidatorImpl::SetError(true);
 }
 
@@ -70,7 +67,7 @@ GXmlValidatorImpl::IsValid(std::string xmlFilename, std::string xsdFilename)
 
 		if( fp == nullptr)
 		{
-			g_common()->HandleError( GText(  "Cannot find XML-file %s", xmlFilename.c_str() ).str(), GLOCATION, THROW_EXCEPTION );
+			g_common_xml()->HandleError( GText(  "Cannot find XML-file %s", xmlFilename.c_str() ).str(), GLOCATION, THROW_EXCEPTION );
 		}
 		else
 		{
@@ -81,7 +78,7 @@ GXmlValidatorImpl::IsValid(std::string xmlFilename, std::string xsdFilename)
 
 		if( fp == nullptr)
 		{
-			g_common()->HandleError( GText(  "Cannot find XSD-file %s", xsdFilename.c_str() ).str(), GLOCATION, THROW_EXCEPTION );
+			g_common_xml()->HandleError( GText(  "Cannot find XSD-file %s", xsdFilename.c_str() ).str(), GLOCATION, THROW_EXCEPTION );
 		}
 		else
 		{
@@ -94,7 +91,7 @@ GXmlValidatorImpl::IsValid(std::string xmlFilename, std::string xsdFilename)
 		
 		if( schemaTextParser == nullptr )
 		{
-			g_common()->HandleError( "Could not create xmlSchemaParserCtxtPtr"   , GLOCATION, THROW_EXCEPTION );	
+			g_common_xml()->HandleError( "Could not create xmlSchemaParserCtxtPtr"   , GLOCATION, THROW_EXCEPTION );	
 		}
 
 		
@@ -105,7 +102,7 @@ GXmlValidatorImpl::IsValid(std::string xmlFilename, std::string xsdFilename)
 		if( HasError() == true )
 		{
 			SetError(false);
-			g_common()->HandleError( GText(   "XML file %s contains errors", xsdFilename.c_str()  ).str() , GLOCATION, THROW_EXCEPTION );
+			g_common_xml()->HandleError( GText(   "XML file %s contains errors", xsdFilename.c_str()  ).str() , GLOCATION, THROW_EXCEPTION );
 		}
 
 		
@@ -130,7 +127,7 @@ GXmlValidatorImpl::IsValid(std::string xmlFilename, std::string xsdFilename)
 		if( HasError() == true )
 		{
 			SetError(false);
-			g_common()->HandleError( GText( "XML file %s contains errors", xmlFilename.c_str()  ).str() , GLOCATION, THROW_EXCEPTION  );
+			g_common_xml()->HandleError( GText( "XML file %s contains errors", xmlFilename.c_str()  ).str() , GLOCATION, THROW_EXCEPTION  );
 		}
 
 		xmlSchemaFreeValidCtxt(ctxt);
@@ -144,13 +141,13 @@ GXmlValidatorImpl::IsValid(std::string xmlFilename, std::string xsdFilename)
 	#ifdef HAS_LOGGING
 	catch (GException & e)
 	{
-		g_common()->HandleError(  GText( "%s", e.what() ).str() , GLOCATION, DISABLE_EXCEPTION  );
+		g_common_xml()->HandleError(  GText( "%s", e.what() ).str() , GLOCATION, DISABLE_EXCEPTION  );
 		return false;
 	}
 	#endif
 	catch( std::exception &e)
 	{
-		g_common()->HandleError(  GText( "%s", e.what() ).str() , GLOCATION, DISABLE_EXCEPTION  );
+		g_common_xml()->HandleError(  GText( "%s", e.what() ).str() , GLOCATION, DISABLE_EXCEPTION  );
 		CERR << e.what() << endl;
 		return false;
 	}
@@ -160,7 +157,7 @@ GXmlValidatorImpl::IsValid(std::string xmlFilename, std::string xsdFilename)
 	}
 	catch (...)
 	{
-		g_common()->HandleError( "Unknown exception caught !!", GLOCATION, DISABLE_EXCEPTION  );
+		g_common_xml()->HandleError( "Unknown exception caught !!", GLOCATION, DISABLE_EXCEPTION  );
 		return false;
 	}
 
@@ -184,7 +181,7 @@ void GXmlValidatorImpl::DoError(void *ctx, const char *msg, ...)
 	#endif
 
 	va_end(ap);
-	g_common()->HandleError( buff, GLOCATION, DISABLE_EXCEPTION  );
+	g_common_xml()->HandleError( buff, GLOCATION, DISABLE_EXCEPTION  );
 }
 
 void GXmlValidatorImpl::DoWarning(void * ctx, const char * msg, ...)
@@ -202,7 +199,7 @@ void GXmlValidatorImpl::DoWarning(void * ctx, const char * msg, ...)
 	#endif
 
 	va_end(ap);
-	g_common()->HandleError( buff, GLOCATION, DISABLE_EXCEPTION  );
+	g_common_xml()->HandleError( buff, GLOCATION, DISABLE_EXCEPTION  );
 }
 
 

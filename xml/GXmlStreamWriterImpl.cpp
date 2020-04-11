@@ -35,7 +35,7 @@ GXmlStreamWriterImpl::GXmlStreamWriterImpl(std::string fileName)
 
 	if( fWriter == nullptr  )
 	{
-		g_common()->HandleError(  "xmlNewTextWriterFilename failed", GLOCATION, THROW_EXCEPTION );
+		g_common_xml()->HandleError(  "xmlNewTextWriterFilename failed", GLOCATION, THROW_EXCEPTION );
 	}
 
 	XML(xmlTextWriterSetIndent(fWriter, 1), GLOCATION, "testXmlwriterFilename: Error at xmlTextWriterSetIndent");

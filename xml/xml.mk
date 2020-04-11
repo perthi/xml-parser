@@ -24,7 +24,7 @@ SRCCPP+= GXmlAttribute.cpp \
 	GXmlValidatorImpl.cpp \
 	GText.cpp \
 	GPrintable.cpp \
-	GCommon.cpp \
+	GCommonXML.cpp \
 	GXmlParser.cpp \
 	GString2Number.cpp \
 	GXmlEntity.cpp
