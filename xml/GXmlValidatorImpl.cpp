@@ -84,9 +84,6 @@ bool
 GXmlValidatorImpl::IsValid( string xml ,  string xsd )
 {
 	int has_schema_errors = 0;
-	static int cnt = 0;
-	XML_FATAL("cnt = %d", cnt );
-	cnt ++;
 
 	try
 	{
@@ -132,16 +129,9 @@ GXmlValidatorImpl::IsValid( string xml ,  string xsd )
 			g_common_xml()->HandleError( GText( "XML file %s contains errors", xml.c_str()  ).str() , GLOCATION, THROW_EXCEPTION  );
 		}
 
-
-		XML_FATAL("TP0 !!!!!!!");		
 		SETPOS(); xmlDocPtr doc = xmlReadFile(xml.c_str(), nullptr, 0);
-
-		XML_FATAL("TP1 !!!!!!!");		
 		XML_ASSERT(doc != nullptr,  GText( "Could not parse %s", xml.c_str() ).str(), GLOCATION );
-		XML_FATAL("TP2 !!!!!!!");	
 		SETPOS(); int ret = xmlSchemaValidateDoc(ctxt, doc);
-		XML_FATAL("TP3 !!!!!!!");		
-
 		xmlSchemaFreeValidCtxt(ctxt);
 		
 		xmlFreeDoc(doc);
@@ -181,7 +171,7 @@ GXmlValidatorImpl::IsValid( string xml ,  string xsd )
 
 void GXmlValidatorImpl::DoError(void *ctx, const char *msg, ...)
 {
-///	FORCE_DEBUG("Calling DO ERROR");
+//    XML_FATAL("Calling DO ERROR");
 	GLocation location = *((GLocation*)ctx);
 	char buff[10240];
 	va_list ap;
@@ -194,12 +184,14 @@ void GXmlValidatorImpl::DoError(void *ctx, const char *msg, ...)
 	#endif
 
 	va_end(ap);
+
 	g_common_xml()->HandleError( buff, location , DISABLE_EXCEPTION  );
 }
 
 void GXmlValidatorImpl::DoWarning(void * ctx, const char * msg, ...)
 {
-//	FORCE_DEBUG("Calling DO WARNING");
+ //   XML_FATAL("Calling DO WARNING");
+	
 	GLocation location = *((GLocation*)ctx);
 	char buff[10240];
 	va_list ap;
