@@ -42,7 +42,7 @@ public:
     API GXmlParser();
     API virtual ~GXmlParser();
 
-///	virtual  vector< std::shared_ptr<KFEntity> > API ParseXML(const string  /*xml*/, const string  /*xsd*/ )  = 0;
+	virtual  vector< std::shared_ptr<KFEntity> > API ParseXML(const string  /*xml*/, const string  /*xsd*/ )  = 0;
 
 	template<typename T>
 	inline T String2Enum(const string hash, std::map<string, T>*);

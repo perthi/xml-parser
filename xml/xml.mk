@@ -26,7 +26,8 @@ SRCCPP+= GXmlAttribute.cpp \
 	GPrintable.cpp \
 	GCommon.cpp \
 	GXmlParser.cpp \
-	GString2Number.cpp
+	GString2Number.cpp \
+	GXmlEntity.cpp
 
 
 CPPFLAGS:=$(CPPFLAGS_RELAXED)
