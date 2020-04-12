@@ -20,7 +20,7 @@ using std::string;
 
 
 class GCommonXML;
-class GLocation;
+class GLocationXml;
 
 GCommonXML * g_common_xml();
 
@@ -34,7 +34,7 @@ class GCommonXML
 	friend    GCommonXML * g_common_xml();
 
 public:
-	void  HandleError(const string message, const GLocation l, const bool disable_error );
+	void  HandleError(const string message, const GLocationXml l, const bool disable_error );
 
 private:
 	GCommonXML() {};

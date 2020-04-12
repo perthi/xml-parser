@@ -33,10 +33,11 @@
 #ifdef HAS_LOGGING
 #include <logging/LLogApi.h>
 #include <utilities/GLocation.h>
+#include <xml/GLocationXml.h>
 #include <exception/GException.h>
 using namespace LOGMASTER;
 #else
-#include <xml/GLocation.h>
+#include <xml/GLocationXml.h>
 #endif
 
 #include <iostream>
@@ -53,11 +54,20 @@ GCommonXML * g_common_xml()
 }
 
 
+
+
 #ifdef HAS_LOGGING
 void
-GCommonXML::HandleError(const string message, const GLocation  l,   const bool   disable_exception  )
+GCommonXML::HandleError(const string message, const GLocationXml  l_xml,   const bool   disable_exception  )
 {
   //  FORCE_DEBUG("l = %s", l.c_str()  );
+    GLocation l(  l_xml.fFileName, l_xml.fLineNo, l_xml.fFunctName  );
+     
+    // l.fFileName = l_xml.fFileName; 
+    // l.fFunctName =l_xml.fFunctName; 
+    // l.fLineNo = l_xml.fLineNo;
+
+
 
     if ( disable_exception == false)
     {
@@ -74,7 +84,7 @@ GCommonXML::HandleError(const string message, const GLocation  l,   const bool  
 #else
 
 void
-GCommonXML::HandleError(const string message, const GLocation l, const bool   disable_exception  )
+GCommonXML::HandleError(const string message, const GLocationXml l, const bool   disable_exception  )
 {
     if ( disable_exception == false)
     {

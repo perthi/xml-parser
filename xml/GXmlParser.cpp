@@ -18,6 +18,11 @@
 
 #include "GXmlEnum2String.h"
 
+#ifdef HAS_LOGGING
+#include <utilities/GLocation.h>
+#endif
+
+
 GXmlParser::GXmlParser()
 {
 
@@ -31,21 +36,22 @@ GXmlParser::~GXmlParser()
 
 
 void
-GXmlParser::AssertTagOpenGroup(std::shared_ptr<GXmlStreamReader> xmlReader, const string tag, GLocation l, const bool read_node )
+GXmlParser::AssertTagOpenGroup(std::shared_ptr<GXmlStreamReader> xmlReader, const string tag, GLocationXml l, const bool read_node )
 {
 	AssertTag(xmlReader, tag, l, eXML_NODETYPE::EOpenTagNode, read_node );
 }
 
 
 void
-GXmlParser::AssertTagCloseGroup(std::shared_ptr<GXmlStreamReader> xmlReader, const string tag, GLocation l, const bool read_node  )
+GXmlParser::AssertTagCloseGroup(std::shared_ptr<GXmlStreamReader> xmlReader, const string tag, GLocationXml l, const bool read_node  )
 {
 	AssertTag(xmlReader, tag, l, eXML_NODETYPE::ECloseTagNode, read_node );
 }
 
 
 void
-GXmlParser::AssertTag(std::shared_ptr<GXmlStreamReader> xmlReader, const string tag, GLocation l, eXML_NODETYPE node_type,  const bool read_node  )
+GXmlParser::AssertTag(std::shared_ptr<GXmlStreamReader> xmlReader, const string tag, GLocationXml l, eXML_NODETYPE node_type,  const bool read_node  )
+
 {
 ///	LLogging::Instance()->Log(  eMSGLEVEL::LOG_INFO, eMSGSYSTEM::SYS_XML, l,   "tag = %s, node type = %s", tag.c_str(),   *node_type  );
 	
@@ -62,25 +68,28 @@ GXmlParser::AssertTag(std::shared_ptr<GXmlStreamReader> xmlReader, const string 
 	string tag_l =  node->GetName();
 
 	#ifdef HAS_LOGGING
+	
+	GLocation ll =  GLocation( l.fFileName, l.fLineNo , l.fFunctName );
+	
 	if( tag_l != tag )
 	{
-		throw( GEngineException( l.fFileName,l.fFunctName, l.fLineNo, eMSGSYSTEM::SYS_XML, 
+		throw( GEngineException( ll.fFileName,ll.fFunctName, ll.fLineNo, eMSGSYSTEM::SYS_XML, 
 		"Unexpected node type(%s), expected %s, got %s",  ToCharPtr(node_type),  tag.c_str(),  tag_l.c_str() ) );
 	}
 	else if( node_type != node_type_l )
 	{
-		throw( GEngineException( l.fFileName,l.fFunctName, l.fLineNo, eMSGSYSTEM::SYS_XML, 
+		throw( GEngineException( ll.fFileName,ll.fFunctName, ll.fLineNo, eMSGSYSTEM::SYS_XML, 
 		"Unexpected tag, expected %s, got %s",  ToCharPtr(node_type), ToCharPtr(node_type_l) ) );
 	}
 
 	#else
 	if( tag_l != tag )
 	{
-		g_common_xml()->HandleError(   GText( "Unexpected node type(%s), expected %s, got %s",  ToCharPtr(node_type),  tag.c_str(),  tag_l.c_str() ).str(), l, THROW_EXCEPTION    );
+		g_common_xml()->HandleError(   GTextXml( "Unexpected node type(%s), expected %s, got %s",  ToCharPtr(node_type),  tag.c_str(),  tag_l.c_str() ).str(), l, THROW_EXCEPTION    );
 	}
 	else if( node_type != node_type_l )
 	{
-		g_common_xml()->HandleError(   GText(  "Unexpected tag, expected %s, got %s",  ToCharPtr(node_type), ToCharPtr(node_type_l) ).str(), l, THROW_EXCEPTION    );
+		g_common_xml()->HandleError(   GTextXml(  "Unexpected tag, expected %s, got %s",  ToCharPtr(node_type), ToCharPtr(node_type_l) ).str(), l, THROW_EXCEPTION    );
 	}
 
 	#endif
@@ -90,28 +99,30 @@ GXmlParser::AssertTag(std::shared_ptr<GXmlStreamReader> xmlReader, const string 
 
 
 void
-GXmlParser::PrinttAttributes( const GXmlNode * const node,  GLocation l)
+GXmlParser::PrinttAttributes( const GXmlNode * const node,  GLocationXml l)
 {
 	vector<GXmlAttribute> a =  node->GetAttributes();
 	string name = node->GetName();
 	auto type = node->GetType();
 	
 	#ifdef HAS_LOGGING
-	LLogging::Instance()->Log(  eMSGLEVEL::LOG_INFO, eMSGSYSTEM::SYS_XML, l,  
+	GLocation ll =  GLocation( l.fFileName, l.fLineNo , l.fFunctName );
+	LLogging::Instance()->Log(  eMSGLEVEL::LOG_INFO, eMSGSYSTEM::SYS_XML, ll,  
 	"tag = %s, type = %s, attributes.size() = %d", name.c_str(),  ToCharPtr(type), a.size() );
 
 	for(size_t i =0; i < a.size(); i++ )
 	{
-		LLogging::Instance()->Log(  eMSGLEVEL::LOG_INFO, eMSGSYSTEM::SYS_XML, l, 
+		LLogging::Instance()->Log(  eMSGLEVEL::LOG_INFO, eMSGSYSTEM::SYS_XML, ll, 
 		"Attribute[%d]: name = %s, value = %s", i, a.at(i).GetName().c_str(), a.at(i).GetValue().c_str()  );
 	}
 
+
 	#else
-	COUT << l.str() << ":" << GText(   "tag = %s, type = %s, attributes.size() = %d", name.c_str(),  ToCharPtr(type), a.size()  ).str()  << endl;	
+	COUT << l.str() << ":" << GTextXml(   "tag = %s, type = %s, attributes.size() = %d", name.c_str(),  ToCharPtr(type), a.size()  ).str()  << endl;	
 	
 	for(size_t i =0; i < a.size(); i++ )
 	{
-		COUT << l.str() << ":" << GText(   "Attribute[%d]: name = %s, value = %s", i, a.at(i).GetName().c_str(), a.at(i).GetValue().c_str()    ).str()  << endl;	
+		COUT << l.str() << ":" << GTextXml(   "Attribute[%d]: name = %s, value = %s", i, a.at(i).GetName().c_str(), a.at(i).GetValue().c_str()    ).str()  << endl;	
 	}
 
 	#endif

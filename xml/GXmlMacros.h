@@ -6,7 +6,7 @@
 #ifdef HAS_LOGGING
 #include  <utilities/GLocation.h>
 #else
-#include  <xml/GLocation.h>
+#include  <xml/GLocationXml.h>
 #endif
 
 #define XML(s,l, m) \

@@ -18,8 +18,8 @@
 #include "GXmlCDataNode.h"
 
 #include  <xml/GCommonXML.h>
-#include  <xml/GText.h>
-#include  <xml/GLocation.h>
+#include  <xml/GTextXml.h>
+#include  <xml/GLocationXml.h>
 
 #include <libxml/xmlreader.h>
 
@@ -55,7 +55,7 @@ std::string NodeTypeToString(const int t)
 	case XML_READER_TYPE_XML_DECLARATION: return "xml_declaration";
 	}
 
-	g_common_xml()->HandleError( GText ( "error determining xml node type for type %i", t).str() , GLOCATION, THROW_EXCEPTION  );
+	g_common_xml()->HandleError( GTextXml ( "error determining xml node type for type %i", t).str() , GLOCATION_XML, THROW_EXCEPTION  );
 	return "ERROR_TYPE";
 }
 
@@ -70,7 +70,7 @@ GXmlStreamReaderImpl::GXmlStreamReaderImpl(const std::string& filename)
 	
 	if( fReader == nullptr  )
 	{
-		g_common_xml()->HandleError( GText (  "xml open failed: %s", filename.c_str()  ).str() , GLOCATION, THROW_EXCEPTION  );
+		g_common_xml()->HandleError( GTextXml (  "xml open failed: %s", filename.c_str()  ).str() , GLOCATION_XML, THROW_EXCEPTION  );
 	}
 
 }
@@ -90,7 +90,7 @@ GXmlNode* GXmlStreamReaderImpl::ReadNode()
 {
 	GXmlNode* node = nullptr;
 
-	static GLocation l = GLocation(__FILE__, __LINE__, __func__);
+	static GLocationXml l = GLocationXml(__FILE__, __LINE__, __func__);
 	xmlSetGenericErrorFunc(&l, DoError );
 
 	while (node == nullptr)
@@ -103,7 +103,7 @@ GXmlNode* GXmlStreamReaderImpl::ReadNode()
 		{
 			if (returncode != 0)
 			{
-				g_common_xml()->HandleError(  "Read failed", GLOCATION, DISABLE_EXCEPTION  );
+				g_common_xml()->HandleError(  "Read failed", GLOCATION_XML, DISABLE_EXCEPTION  );
 			}
 
 			break;
@@ -187,7 +187,7 @@ GXmlNode* GXmlStreamReaderImpl::CreateNodeFromType(const int nodetype, const cha
 	//case XML_READER_TYPE_XML_DECLARATION: return "xml_declaration";
 	default:
 		// document has a node type which is not implemented.
-		g_common_xml()->HandleError( GText (    "Node with type %i (%s) not found", nodetype, NodeTypeToString(nodetype)    ).str() , GLOCATION, THROW_EXCEPTION  );
+		g_common_xml()->HandleError( GTextXml (    "Node with type %i (%s) not found", nodetype, NodeTypeToString(nodetype)    ).str() , GLOCATION_XML, THROW_EXCEPTION  );
 	}
 
 	return node;
@@ -218,7 +218,7 @@ GXmlStreamReaderImpl::GetColumnNumber()  const
 void
 GXmlStreamReaderImpl::DoError(void *ctx, const char *msg, ...)
 {
-	GLocation location = *((GLocation*)ctx);
+	GLocationXml location = *((GLocationXml*)ctx);
 	char buff[10240];
 	va_list ap;
 	va_start(ap, msg);
@@ -228,5 +228,5 @@ GXmlStreamReaderImpl::DoError(void *ctx, const char *msg, ...)
 	vsnprintf (buff, sizeof(buff), msg, ap);
 	#endif
 	va_end(ap);
-	g_common_xml()->HandleError( GText (   buff    ).str() , location,  DISABLE_EXCEPTION );
+	g_common_xml()->HandleError( GTextXml (   buff    ).str() , location,  DISABLE_EXCEPTION );
 }

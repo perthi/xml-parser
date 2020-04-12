@@ -18,14 +18,15 @@
 using std::string;
 #include <typeinfo>
 
-#define GLOCATION  GLocation(__FILE__, __LINE__, __FUNCTION__)
+#define GLOCATION_XML  GLocationXml(__FILE__, __LINE__, __FUNCTION__)
+
 
 
 /** @brief Helper class to stor information about source code location */
-struct GLocation
+struct GLocationXml
 {
   
-    inline GLocation(const string fname, const int lineno, const string funct ) : fFileName(fname), fLineNo(lineno), fFunctName(funct) {}
+    inline GLocationXml(const string fname, const int lineno, const string funct ) : fFileName(fname), fLineNo(lineno), fFunctName(funct) {}
     string fFileName;
     int   fLineNo;
     string fFunctName;
