@@ -37,12 +37,12 @@ static void schemaParseErrorHandler(void *  /*ctx*/, xmlErrorPtr error)
 	// FORCE_DEBUG("msg2 = %s", error->str2 );
 	// FORCE_DEBUG("msg3 = %s", error->str3 );
 
-	g_common_xml()->HandleError(  GText(  "Offending file: %s (error code %d) (from %s line[%d])",
+	g_common_xml()->HandleError(  GTextXml(  "Offending file: %s (error code %d) (from %s line[%d])",
 	                                  error->message, error->code, __func__, __LINE__  ).str(),   
 									  GLocation(error->file, error->line,  "" ), 
 									  DISABLE_EXCEPTION    );
 
-	g_common_xml()->HandleError(  GText( "%s line %d contains error(s)  !!!!!!!!", 
+	g_common_xml()->HandleError(  GTextXml( "%s line %d contains error(s)  !!!!!!!!", 
 		                                 __func__, __LINE__  ).str(),   GLocation(error->file, error->line,  "" ), DISABLE_EXCEPTION    );
 	GXmlValidatorImpl::SetError(true);
 }
@@ -69,7 +69,7 @@ GXmlValidatorImpl::DoExistFile( const string f  )
 
 	if( fp == nullptr)
 	{
-		g_common_xml()->HandleError( GText(  "Cannot find XML-file %s", f.c_str() ).str(), GLOCATION, THROW_EXCEPTION );
+		g_common_xml()->HandleError( GTextXml(  "Cannot find XML-file %s", f.c_str() ).str(), GLOCATION, THROW_EXCEPTION );
 		return false;
 	}
 	else
@@ -89,8 +89,8 @@ GXmlValidatorImpl::IsValid( string xml ,  string xsd )
 	{
 		GLocation location = GLocation(__FILE__, __LINE__, __func__);
 
-		XML_ASSERT(  DoExistFile( xml ), GText("could not open file %s", xml.c_str() ).str() , GLOCATION  ) ;
-		XML_ASSERT(  DoExistFile( xsd ), GText("could not open file %s", xsd.c_str() ).str(), GLOCATION  ) ;
+		XML_ASSERT(  DoExistFile( xml ), GTextXml("could not open file %s", xml.c_str() ).str() , GLOCATION  ) ;
+		XML_ASSERT(  DoExistFile( xsd ), GTextXml("could not open file %s", xsd.c_str() ).str(), GLOCATION  ) ;
 
 		::xmlSetGenericErrorFunc(&location, DoError);
 		SETPOS(); xmlSchemaParserCtxtPtr schemaTextParser = ::xmlSchemaNewParserCtxt(xsd.c_str());
@@ -107,7 +107,7 @@ GXmlValidatorImpl::IsValid( string xml ,  string xsd )
 		if( HasError() == true )
 		{
 			SetError(false);
-			g_common_xml()->HandleError( GText(   "XML file %s contains errors", xsd.c_str()  ).str() , GLOCATION, THROW_EXCEPTION );
+			g_common_xml()->HandleError( GTextXml(   "XML file %s contains errors", xsd.c_str()  ).str() , GLOCATION, THROW_EXCEPTION );
 		}
 
 		XML_ASSERT(schema != nullptr, "Could not parse xmlSchemaPtr", GLOCATION ) ;
@@ -126,17 +126,17 @@ GXmlValidatorImpl::IsValid( string xml ,  string xsd )
 		if( HasError() == true )
 		{
 			SetError(false);
-			g_common_xml()->HandleError( GText( "XML file %s contains errors", xml.c_str()  ).str() , GLOCATION, THROW_EXCEPTION  );
+			g_common_xml()->HandleError( GTextXml( "XML file %s contains errors", xml.c_str()  ).str() , GLOCATION, THROW_EXCEPTION  );
 		}
 
 		SETPOS(); xmlDocPtr doc = xmlReadFile(xml.c_str(), nullptr, 0);
-		XML_ASSERT(doc != nullptr,  GText( "Could not parse %s", xml.c_str() ).str(), GLOCATION );
+		XML_ASSERT(doc != nullptr,  GTextXml( "Could not parse %s", xml.c_str() ).str(), GLOCATION );
 		SETPOS(); int ret = xmlSchemaValidateDoc(ctxt, doc);
 		xmlSchemaFreeValidCtxt(ctxt);
 		
 		xmlFreeDoc(doc);
 		
-		XML_ASSERT( ret >= 0,  GText( "%s validation generated an internal error", xml.c_str() ).str(), GLOCATION  );
+		XML_ASSERT( ret >= 0,  GTextXml( "%s validation generated an internal error", xml.c_str() ).str(), GLOCATION  );
 
 		return(ret == 0);
 	}
@@ -144,14 +144,14 @@ GXmlValidatorImpl::IsValid( string xml ,  string xsd )
 	#ifdef HAS_LOGGING
 	catch (GException & e)
 	{
-	//	g_common_xml()->HandleError(  GText( "%s", e.what() ).str() , GLOCATION, DISABLE_EXCEPTION  );
+	//	g_common_xml()->HandleError(  GTextXml( "%s", e.what() ).str() , GLOCATION, DISABLE_EXCEPTION  );
 		throw(e);	
 		return false;
 	}
 	#endif
 	catch( std::exception &e)
 	{
-		//g_common_xml()->HandleError(  GText( "%s", e.what() ).str() , GLOCATION, DISABLE_EXCEPTION  );
+		//g_common_xml()->HandleError(  GTextXml( "%s", e.what() ).str() , GLOCATION, DISABLE_EXCEPTION  );
 		throw(e);
 		return false;
 	}

@@ -27,57 +27,57 @@
 ******************************************************************************
 ******************************************************************************/
 
-#include <xml/GText.h>
+#include <xml/GTextXml.h>
 #include <cstdarg>
 
-#define GText_MAX_SIZE 4096
+#define GTextXml_MAX_SIZE 4096
 
 
-GText::GText(const char * fmt, ...) : fText("")
+GTextXml::GTextXml(const char * fmt, ...) : fText("")
 {
     va_list ap;
     va_start(ap, fmt);
-    SetGText(fmt, ap);
+    SetGTextXml(fmt, ap);
     va_end(ap);
  }
 
 
-// GText::GText(char *message, const int n, const char * fmt, ...) : fText("")
+// GTextXml::GTextXml(char *message, const int n, const char * fmt, ...) : fText("")
 // {
 //     va_list ap;
 //     va_start(ap, fmt);
 //     vsnprintf(message, n-1 , fmt, ap);
-//     SetGText(fmt, ap);
+//     SetGTextXml(fmt, ap);
 //     va_end(ap);
 // }
 
 
-GText::GText(const string s ) : fText("")
+GTextXml::GTextXml(const string s ) : fText("")
 {   
    fText = s;
 }
 
 
 void
-GText::SetGText(const char *fmt, va_list ap)
+GTextXml::SetGTextXml(const char *fmt, va_list ap)
 {
-    static char msg[GText_MAX_SIZE]; // CRAP PTH
+    static char msg[GTextXml_MAX_SIZE]; // CRAP PTH
     vsnprintf(msg, sizeof(msg) -1, fmt, ap);
     fText = string(msg);
 }
 
 
 
-GText & 
-GText::operator  = (const char *rhs)
+GTextXml & 
+GTextXml::operator  = (const char *rhs)
 {
-    this->SetGText(rhs);
+    this->SetGTextXml(rhs);
     return *this;
 }
 
 
 void 
-GText::SetGText(const char *txt)
+GTextXml::SetGTextXml(const char *txt)
 {
     fText =  string(txt);
 }
@@ -86,7 +86,7 @@ GText::SetGText(const char *txt)
 
 
 string    
-GText::str() const 
+GTextXml::str() const 
 { 
     return fText; 
 
@@ -94,21 +94,21 @@ GText::str() const
 
 
 int64_t  
-GText::size() const
+GTextXml::size() const
 {
     return fText.size();
 }
 
 
 const char *  
-GText::c_str() const 
+GTextXml::c_str() const 
 { 
     return fText.c_str(); 
 }
 
 
 const char *
-GText::what() const
+GTextXml::what() const
 { 
     return fText.c_str(); 
 }

@@ -57,7 +57,7 @@ using std::string;
 
 
 #define EXCECUTION_ERROR -33
-#define ARG_MAX 4096
+///#define ARG_MAX 4096
 
 #define COUT  cout << __FILE__ << ":" <<__LINE__ <<":" << __FUNCTION__ <<":"
 #define CERR  cerr << __FILE__ << ":" <<__LINE__ <<":" << __FUNCTION__ <<":"

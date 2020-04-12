@@ -17,50 +17,50 @@ using std::string;
 #include <stdint.h>
 
 /** @brief Generate a text object using printf formatting */
-class GText : public GPrintable
+class GTextXml : public GPrintable
 {
 public:
-   API GText (const char * fmt, ... );
-   ///API GText (char *message, const int n, const char * fmt, ...);
-   API GText (const string s );
+   API GTextXml (const char * fmt, ... );
+   ///API GTextXml (char *message, const int n, const char * fmt, ...);
+   API GTextXml (const string s );
    string             API    str() const  override;
    int64_t            API    size() const;
    const              API    char *    what() const;
    const char         API  * c_str() const;
-   void               API    SetGText(const char *txt);
+   void               API    SetGTextXml(const char *txt);
   
-   GText &  operator  = (const char *rhs);
-   void                SetGText(const char *fmt, va_list ap);
+   GTextXml &  operator  = (const char *rhs);
+   void                SetGTextXml(const char *fmt, va_list ap);
 
 private:
   
-    GText() : fText("") {};
+    GTextXml() : fText("") {};
     string fText;
 };
 
 
-inline string operator  + (const GText &lhs, const string &rhs);
-inline string operator  + (const string &lhs, const GText &rhs);
-inline bool operator  == (const GText &lhs, const string &rhs);
-inline bool operator  == (const string &lhs, const GText &rhs);
-inline bool operator  != (const GText &lhs, const string &rhs);
-inline bool operator  != (const string &lhs, const GText &rhs);
+inline string operator  + (const GTextXml &lhs, const string &rhs);
+inline string operator  + (const string &lhs, const GTextXml &rhs);
+inline bool operator  == (const GTextXml &lhs, const string &rhs);
+inline bool operator  == (const string &lhs, const GTextXml &rhs);
+inline bool operator  != (const GTextXml &lhs, const string &rhs);
+inline bool operator  != (const string &lhs, const GTextXml &rhs);
 
 
 
-inline string operator  + (const GText &lhs, const string &rhs)
+inline string operator  + (const GTextXml &lhs, const string &rhs)
 {
     return  lhs.str() + rhs;
 }
 
 
-inline string operator  + (const string &lhs, const GText &rhs)
+inline string operator  + (const string &lhs, const GTextXml &rhs)
 {
     return  lhs + rhs.str();
 }
 
 
-inline bool operator  == (const GText &lhs, const string &rhs)
+inline bool operator  == (const GTextXml &lhs, const string &rhs)
 {
     if (lhs.str() == rhs)
     {
@@ -73,7 +73,7 @@ inline bool operator  == (const GText &lhs, const string &rhs)
 }
 
 
-inline bool operator  == (const string &lhs, const GText &rhs)
+inline bool operator  == (const string &lhs, const GTextXml &rhs)
 {
     if (rhs.str() == lhs)
     {
@@ -86,7 +86,7 @@ inline bool operator  == (const string &lhs, const GText &rhs)
 }
 
 
-inline bool operator  != (const GText &lhs, const string &rhs)
+inline bool operator  != (const GTextXml &lhs, const string &rhs)
 {
     if (lhs.str() == rhs)
     {
@@ -99,7 +99,7 @@ inline bool operator  != (const GText &lhs, const string &rhs)
 }
 
 
-inline bool operator  != (const string &lhs, const GText &rhs)
+inline bool operator  != (const string &lhs, const GTextXml &rhs)
 {
     if (rhs.str() == lhs)
     {
