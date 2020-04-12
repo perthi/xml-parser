@@ -94,7 +94,7 @@ GXmlParser::GetTagValue( std::shared_ptr<GXmlStreamReader> xmlReader, const stri
 	}
 
 	XML_ASSERT( node->GetType() == eXML_NODETYPE::EOpenTagNode, 
-	GTextXml("Unexpcted node type %d (name = %s, type = %s, value = %s)", 
+	GTextXml("Unexpected node type %d (name = %s, type = %s, value = %s)", 
 	                 node->GetType(), 
 					 node->GetName().c_str(),   
 					 ToString(node->GetType() ).c_str() ,  
@@ -189,6 +189,7 @@ GXmlParser::GetTagValueOrNothing( std::shared_ptr<GXmlStreamReader> xmlReader, c
 	}
 }
 
+
 /*** Takes as input a hasmap and extracts the hash codes into a vector.
  *   For instance if the input is map<string, int> (i.e the hash code is a string)
  *   then the function returns a string with all the hash entries in the map. The string
@@ -227,4 +228,3 @@ GXmlParser::Hash2String(const map<string, T> *m, const int ncols, const string s
 
     return buffer.str();
 }
-
