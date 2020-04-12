@@ -60,14 +60,7 @@ GCommonXML * g_common_xml()
 void
 GCommonXML::HandleError(const string message, const GLocationXml  l_xml,   const bool   disable_exception  )
 {
-  //  FORCE_DEBUG("l = %s", l.c_str()  );
     GLocation l(  l_xml.fFileName, l_xml.fLineNo, l_xml.fFunctName  );
-     
-    // l.fFileName = l_xml.fFileName; 
-    // l.fFunctName =l_xml.fFunctName; 
-    // l.fLineNo = l_xml.fLineNo;
-
-
 
     if ( disable_exception == false)
     {
