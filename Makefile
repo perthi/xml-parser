@@ -43,7 +43,7 @@ export COMMON_FLAGS:= -fPIC -std=c++17  -g
 export PEDANTIC_FLAGS:= -Weffc++ -Wshadow -Wall -Wextra -Wpedantic -Wno-unknown-pragmas -Wswitch-enum -Wimplicit-fallthrough -Wignored-qualifiers 
 
 export CPPFLAGS:=           $(COMMON_FLAGS) $(PEDANTIC_FLAGS)
-export CPPFLAGS_RELAXED:=   $(COMMON_FLAGS)
+export CPPFLAGS_RELAXED:=   $(COMMON_FLAGS) $(PEDANTIC_FLAGS)
 
 export XML_DIR:=$(CURDIR)/xml/3rd-party/
 export XML_INCLUDES:= -I $(XML_DIR)
