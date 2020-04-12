@@ -74,22 +74,24 @@ GXmlParser::AssertTag(std::shared_ptr<GXmlStreamReader> xmlReader, const string 
 	if( tag_l != tag )
 	{
 		throw( GEngineException( ll.fFileName,ll.fFunctName, ll.fLineNo, eMSGSYSTEM::SYS_XML, 
-		"Unexpected node type(%s), expected %s, got %s",  ToCharPtr(node_type),  tag.c_str(),  tag_l.c_str() ) );
+		"Unexpected node type(%s), expected %s, got %s",  ToString(node_type).c_str()  ,  tag.c_str(),  tag_l.c_str() ) );
 	}
 	else if( node_type != node_type_l )
 	{
 		throw( GEngineException( ll.fFileName,ll.fFunctName, ll.fLineNo, eMSGSYSTEM::SYS_XML, 
-		"Unexpected tag, expected %s, got %s",  ToCharPtr(node_type), ToCharPtr(node_type_l) ) );
+		"Unexpected tag, expected %s, got %s",  ToString(node_type).c_str() , ToString(node_type_l).c_str()   ) );
 	}
 
 	#else
 	if( tag_l != tag )
 	{
-		g_common_xml()->HandleError(   GTextXml( "Unexpected node type(%s), expected %s, got %s",  ToCharPtr(node_type),  tag.c_str(),  tag_l.c_str() ).str(), l, THROW_EXCEPTION    );
+		g_common_xml()->HandleError(   GTextXml( "Unexpected node type(%s), expected %s, got %s",  
+		                                         ToString(node_type).c_str() ,  tag.c_str(),  tag_l.c_str() ).str(), l, THROW_EXCEPTION    );
 	}
 	else if( node_type != node_type_l )
 	{
-		g_common_xml()->HandleError(   GTextXml(  "Unexpected tag, expected %s, got %s",  ToCharPtr(node_type), ToCharPtr(node_type_l) ).str(), l, THROW_EXCEPTION    );
+		g_common_xml()->HandleError(   GTextXml(  "Unexpected tag, expected %s, got %s",  ToString(node_type).c_str(), 
+		                                          ToString(node_type_l).c_str()  ).str(), l, THROW_EXCEPTION    );
 	}
 
 	#endif
@@ -108,7 +110,7 @@ GXmlParser::PrinttAttributes( const GXmlNode * const node,  GLocationXml l)
 	#ifdef HAS_LOGGING
 	GLocation ll =  GLocation( l.fFileName, l.fLineNo , l.fFunctName );
 	LLogging::Instance()->Log(  eMSGLEVEL::LOG_INFO, eMSGSYSTEM::SYS_XML, ll,  
-	"tag = %s, type = %s, attributes.size() = %d", name.c_str(),  ToCharPtr(type), a.size() );
+	"tag = %s, type = %s, attributes.size() = %d", name.c_str(),  ToString(type).c_str() , a.size() );
 
 	for(size_t i =0; i < a.size(); i++ )
 	{
@@ -118,7 +120,7 @@ GXmlParser::PrinttAttributes( const GXmlNode * const node,  GLocationXml l)
 
 
 	#else
-	COUT << l.str() << ":" << GTextXml(   "tag = %s, type = %s, attributes.size() = %d", name.c_str(),  ToCharPtr(type), a.size()  ).str()  << endl;	
+	COUT << l.str() << ":" << GTextXml(   "tag = %s, type = %s, attributes.size() = %d", name.c_str(),  ToString(type).c_str() , a.size()  ).str()  << endl;	
 	
 	for(size_t i =0; i < a.size(); i++ )
 	{
@@ -139,13 +141,16 @@ GXmlParser::HasAttributes(  const GXmlNode * const node ) const
 string
 GXmlParser::ToString( const eXML_NODETYPE type)
 {
-	return GXmlEnum2String::Enum2String(type );
+	string s =  GXmlEnum2String::Enum2String(type );
+//	FORCE_DEBUG("s = %s", s.c_str() );
+	return s;
 }
 
 
-const char *
-GXmlParser::ToCharPtr( const eXML_NODETYPE type)
-{
-	return (GXmlEnum2String::Enum2String(type ) ).c_str();
+// const char *
+// GXmlParser::ToCharPtr( const eXML_NODETYPE type)
+// {
 
-}
+// 	return ( ToString(type ) ).c_str();
+
+// }
