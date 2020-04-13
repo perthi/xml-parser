@@ -18,7 +18,7 @@
 using std::string;
 #include <typeinfo>
 
-#define GLOCATION_XML  GLocationXml(__FILE__, __LINE__, __FUNCTION__)
+#define GLOCATION_SRC  GLocationXml(__FILE__, __LINE__, __FUNCTION__)
 
 
 

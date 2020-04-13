@@ -55,7 +55,7 @@ std::string NodeTypeToString(const int t)
 	case XML_READER_TYPE_XML_DECLARATION: return "xml_declaration";
 	}
 
-	g_common_xml()->HandleError( GTextXml ( "error determining xml node type for type %i", t).str() , GLOCATION_XML, THROW_EXCEPTION  );
+	g_common_xml()->HandleError( GTextXml ( "error determining xml node type for type %i", t).str() , GLOCATION_SRC, THROW_EXCEPTION  );
 	return "ERROR_TYPE";
 }
 
@@ -70,7 +70,7 @@ GXmlStreamReaderImpl::GXmlStreamReaderImpl(const std::string& filename)
 	
 	if( fReader == nullptr  )
 	{
-		g_common_xml()->HandleError( GTextXml (  "xml open failed: %s", filename.c_str()  ).str() , GLOCATION_XML, THROW_EXCEPTION  );
+		g_common_xml()->HandleError( GTextXml (  "xml open failed: %s", filename.c_str()  ).str() , GLOCATION_SRC, THROW_EXCEPTION  );
 	}
 
 }
@@ -103,7 +103,7 @@ GXmlNode* GXmlStreamReaderImpl::ReadNode()
 		{
 			if (returncode != 0)
 			{
-				g_common_xml()->HandleError(  "Read failed", GLOCATION_XML, DISABLE_EXCEPTION  );
+				g_common_xml()->HandleError(  "Read failed", GLOCATION_SRC, DISABLE_EXCEPTION  );
 			}
 
 			break;
@@ -187,7 +187,7 @@ GXmlNode* GXmlStreamReaderImpl::CreateNodeFromType(const int nodetype, const cha
 	//case XML_READER_TYPE_XML_DECLARATION: return "xml_declaration";
 	default:
 		// document has a node type which is not implemented.
-		g_common_xml()->HandleError( GTextXml (    "Node with type %i (%s) not found", nodetype, NodeTypeToString(nodetype)    ).str() , GLOCATION_XML, THROW_EXCEPTION  );
+		g_common_xml()->HandleError( GTextXml (    "Node with type %i (%s) not found", nodetype, NodeTypeToString(nodetype)    ).str() , GLOCATION_SRC, THROW_EXCEPTION  );
 	}
 
 	return node;

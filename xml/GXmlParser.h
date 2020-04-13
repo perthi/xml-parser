@@ -151,7 +151,7 @@ GXmlParser::GetTagValue( std::shared_ptr<GXmlStreamReader> xmlReader, const stri
 	}
 	else
 	{
-		g_common_xml()->HandleError(  GTextXml(  "unexpected value for boolean %s, expected either \"true\" or \"false\"",  tmp.c_str() ).str(), GLOCATION_XML, THROW_EXCEPTION  );
+		g_common_xml()->HandleError(  GTextXml(  "unexpected value for boolean %s, expected either \"true\" or \"false\"",  tmp.c_str() ).str(), GLOCATION_SRC, THROW_EXCEPTION  );
 	}
 
 	return false;
@@ -165,7 +165,7 @@ GXmlParser::String2Enum(const string hash, std::map<string, T>* m)
 	auto it = m->find(hash);
 	XML_ASSERT(it != m->end(), 
 	GTextXml( "could not find enum for hash tag %s, \n legal values are: %s", hash.c_str(), Hash2String(m).c_str()).str() ,
-	GLOCATION_XML ) ;
+	GLOCATION_SRC ) ;
 	return (T)it->second;
 }
 
