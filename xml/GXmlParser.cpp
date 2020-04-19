@@ -73,12 +73,12 @@ GXmlParser::AssertTag(std::shared_ptr<GXmlStreamReader> xmlReader, const string 
 	
 	if( tag_l != tag )
 	{
-		throw( GXMLException( ll.fFileName,ll.fFunctName, ll.fLineNo, eMSGSYSTEM::SYS_XML, 
+		throw( GXmlException( ll.fFileName,ll.fFunctName, ll.fLineNo, eMSGSYSTEM::SYS_XML, 
 		"Unexpected node type(%s), expected %s, got %s",  ToString(node_type).c_str()  ,  tag.c_str(),  tag_l.c_str() ) );
 	}
 	else if( node_type != node_type_l )
 	{
-		throw( GXMLException( ll.fFileName,ll.fFunctName, ll.fLineNo, eMSGSYSTEM::SYS_XML, 
+		throw( GXmlException( ll.fFileName,ll.fFunctName, ll.fLineNo, eMSGSYSTEM::SYS_XML, 
 		"Unexpected tag, expected %s, got %s",  ToString(node_type).c_str() , ToString(node_type_l).c_str()   ) );
 	}
 
