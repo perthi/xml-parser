@@ -18,6 +18,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xml-validator", "xml\xml-va
 		{6A271C05-6E79-46F1-90D6-70A71FDB3EF9} = {6A271C05-6E79-46F1-90D6-70A71FDB3EF9}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xml-example1", "xml\examples\xml-example1\xml-example1.vcxproj", "{8F5F2681-3052-407D-9865-F495B261FB44}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -58,6 +60,14 @@ Global
 		{D46379D6-6127-441C-9864-E05AFAD82B81}.Release|x64.Build.0 = Release|x64
 		{D46379D6-6127-441C-9864-E05AFAD82B81}.Release|x86.ActiveCfg = Release|Win32
 		{D46379D6-6127-441C-9864-E05AFAD82B81}.Release|x86.Build.0 = Release|Win32
+		{8F5F2681-3052-407D-9865-F495B261FB44}.Debug|x64.ActiveCfg = Debug|x64
+		{8F5F2681-3052-407D-9865-F495B261FB44}.Debug|x64.Build.0 = Debug|x64
+		{8F5F2681-3052-407D-9865-F495B261FB44}.Debug|x86.ActiveCfg = Debug|Win32
+		{8F5F2681-3052-407D-9865-F495B261FB44}.Debug|x86.Build.0 = Debug|Win32
+		{8F5F2681-3052-407D-9865-F495B261FB44}.Release|x64.ActiveCfg = Release|x64
+		{8F5F2681-3052-407D-9865-F495B261FB44}.Release|x64.Build.0 = Release|x64
+		{8F5F2681-3052-407D-9865-F495B261FB44}.Release|x86.ActiveCfg = Release|Win32
+		{8F5F2681-3052-407D-9865-F495B261FB44}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
