@@ -1,2 +1,0 @@
--L /home/perthi/github/xml-parser/build/x86/lib -lm -lxml-embc -lxml2
-c++ -std=c++17 -fPIC -std=c++17 -g -o xml-example1 xml-example1.o -L /home/perthi/github/xml-parser/build/x86/lib -lm -lxml-embc -lxml2

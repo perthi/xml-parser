@@ -1,2 +1,0 @@
--L /home/perthi/github/xml-parser/build/x86/lib -lm -lgtest -lpthread -lX11 -lreadline -lxml-embc -lxml2
-c++ -std=c++17 -fPIC -std=c++17 -g -o xml-unit-tests xml-unit-tests.o TestGXmlClassFactory.o TestGXmlValidatorImpl.o -L /home/perthi/github/xml-parser/build/x86/lib -lm -lgtest -lpthread -lX11 -lreadline -lxml-embc -lxml2
