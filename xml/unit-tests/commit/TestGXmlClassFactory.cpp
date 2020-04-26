@@ -40,7 +40,6 @@ TestGXmlClassFactory::~TestGXmlClassFactory()
 
 
 
-/*
 TEST_F(TestGXmlClassFactory, CreateStreamWriter)
 {
 	try
@@ -71,7 +70,7 @@ TEST_F(TestGXmlClassFactory, CreateStreamWriter)
 	}
 
 }
-*/
+
 
 
 

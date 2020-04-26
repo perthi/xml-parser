@@ -20,32 +20,32 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{6A271C05-6E79-46F1-90D6-70A71FDB3EF9}</ProjectGuid>
-    <RootNamespace>xml</RootNamespace>
+    <ProjectGuid>{D46379D6-6127-441C-9864-E05AFAD82B81}</ProjectGuid>
+    <RootNamespace>xmlvalidator</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -58,19 +58,19 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\properties\xml-parser.props" />
+    <Import Project="..\..\properties\xml-parser.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\properties\xml-parser.props" />
+    <Import Project="..\..\properties\xml-parser.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\properties\xml-parser.props" />
+    <Import Project="..\..\properties\xml-parser.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\properties\xml-parser.props" />
+    <Import Project="..\..\properties\xml-parser.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -91,19 +91,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)xml\3rd-party\</AdditionalIncludeDirectories>
-      <TreatWarningAsError>true</TreatWarningAsError>
+      <AdditionalIncludeDirectories>$(include);$(SolutionDir)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)xml\3rd-party\libxml\lib\x86</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libxml2.lib</AdditionalDependencies>
+      <AdditionalDependencies>xml.lib;libxml2.lib</AdditionalDependencies>
     </Link>
-    <PostBuildEvent>
-      <Command>
-      </Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -111,19 +105,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)xml\3rd-party\</AdditionalIncludeDirectories>
-      <TreatWarningAsError>true</TreatWarningAsError>
+      <AdditionalIncludeDirectories>$(include);$(SolutionDir)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)xml\3rd-party\libxml\lib\x64</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libxml2.lib</AdditionalDependencies>
+      <AdditionalDependencies>xml.lib;libxml2.lib</AdditionalDependencies>
     </Link>
-    <PostBuildEvent>
-      <Command>
-      </Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -133,20 +121,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)xml\3rd-party\</AdditionalIncludeDirectories>
-      <TreatWarningAsError>true</TreatWarningAsError>
+      <AdditionalIncludeDirectories>$(include);$(SolutionDir)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)xml\3rd-party\libxml\lib\x86</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libxml2.lib</AdditionalDependencies>
+      <AdditionalDependencies>xml.lib;libxml2.lib</AdditionalDependencies>
     </Link>
-    <PostBuildEvent>
-      <Command>copy  $(SolutionDir)\xml\3rd-party\libxml\lib\x86\*  $(bindir)</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -156,80 +139,21 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)xml\3rd-party\</AdditionalIncludeDirectories>
-      <TreatWarningAsError>true</TreatWarningAsError>
+      <AdditionalIncludeDirectories>$(include);$(SolutionDir)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)xml\3rd-party\libxml\lib\x64</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libxml2.lib</AdditionalDependencies>
+      <AdditionalDependencies>xml.lib;libxml2.lib</AdditionalDependencies>
     </Link>
-    <PostBuildEvent>
-      <Command>copy  $(SolutionDir)\xml\3rd-party\libxml\lib\x64\*  $(bindir)</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="GColor.h" />
-    <ClInclude Include="GCommonXML.h" />
-    <ClInclude Include="GDefinitions.h" />
-    <ClInclude Include="GLocationXml.h" />
-    <ClInclude Include="GPrintable.h" />
-    <ClInclude Include="GString2Number.h" />
-    <ClInclude Include="GTextXml.h" />
-    <ClInclude Include="GXmlAttribute.h" />
-    <ClInclude Include="GXmlCDataNode.h" />
-    <ClInclude Include="GXmlClassFactory.h" />
-    <ClInclude Include="GXmlCloseTagNode.h" />
-    <ClInclude Include="GXmlCommentNode.h" />
-    <ClInclude Include="GXmlDataTypes.h" />
-    <ClInclude Include="GXmlDocTypeNode.h" />
-    <ClInclude Include="GXmlEntity.h" />
-    <ClInclude Include="GXmlEnum2String.h" />
-    <ClInclude Include="GXmlEnums.h" />
-    <ClInclude Include="GXmlMacros.h" />
-    <ClInclude Include="GXmlNode.h" />
-    <ClInclude Include="GXmlNodeImpl.h" />
-    <ClInclude Include="GXmlOpenTagNode.h" />
-    <ClInclude Include="GXmlParser.h" />
-    <ClInclude Include="GXmlProcInstructNode.h" />
-    <ClInclude Include="GXmlSingleTagNode.h" />
-    <ClInclude Include="GXmlStreamReader.h" />
-    <ClInclude Include="GXmlStreamReaderImpl.h" />
-    <ClInclude Include="GXmlStreamReaderSp.h" />
-    <ClInclude Include="GXmlStreamWriter.h" />
-    <ClInclude Include="GXmlStreamWriterImpl.h" />
-    <ClInclude Include="GXmlTagNode.h" />
-    <ClInclude Include="GXmlTextNode.h" />
-    <ClInclude Include="GXmlValidator.h" />
-    <ClInclude Include="GXmlValidatorImpl.h" />
-    <ClInclude Include="LEnums.h" />
+    <ClCompile Include="xml-validator.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GCommonXML.cpp" />
-    <ClCompile Include="GLocationXml.cpp" />
-    <ClCompile Include="GPrintable.cpp" />
-    <ClCompile Include="GString2Number.cpp" />
-    <ClCompile Include="GTextXml.cpp" />
-    <ClCompile Include="GXmlAttribute.cpp" />
-    <ClCompile Include="GXmlCDataNode.cpp" />
-    <ClCompile Include="GXmlClassFactory.cpp" />
-    <ClCompile Include="GXmlCommentNode.cpp" />
-    <ClCompile Include="GXmlDocTypeNode.cpp" />
-    <ClCompile Include="GXmlEntity.cpp" />
-    <ClCompile Include="GXmlEnum2String.cpp" />
-    <ClCompile Include="GXmlNodeImpl.cpp" />
-    <ClCompile Include="GXmlParser.cpp" />
-    <ClCompile Include="GXmlProcInstructNode.cpp" />
-    <ClCompile Include="GXmlStreamReaderImpl.cpp" />
-    <ClCompile Include="GXmlStreamReaderSp.cpp" />
-    <ClCompile Include="GXmlStreamWriterImpl.cpp" />
-    <ClCompile Include="GXmlTagNode.cpp" />
-    <ClCompile Include="GXmlTextNode.cpp" />
-    <ClCompile Include="GXmlValidator.cpp" />
-    <ClCompile Include="GXmlValidatorImpl.cpp" />
+    <ClInclude Include="xml-validator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

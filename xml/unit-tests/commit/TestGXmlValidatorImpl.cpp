@@ -16,12 +16,14 @@
 
  void TestGXmlValidatorImpl::SetUpTestCase()
  {
-	 #ifdef _WIN32
+
+
+	/* #ifdef _WIN32
 	 	fDataDir = std::string( g_system()->GetHomeDir()) + std::string("modules\\support-modules\\xml\\unit-tests\\commit\\data\\");
 	 #else
-			string home = getenv("FERROTECH_HOME");
+			string home = getenv("XML__PARSER_HOME");
 			fDataDir =  home + "/modules/support-modules/xml/unit-tests/commit/data/";
-	 #endif
+	 #endif*/
 	
  }
 
