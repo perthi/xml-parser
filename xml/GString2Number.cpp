@@ -3,7 +3,7 @@
 
 #include "GString2Number.h"
 #include "GXmlMacros.h"
-#include <xml/GLocationXml.h>
+#include "GLocationXml.h"
 
 #include <iostream> 
 #include <string>
@@ -47,7 +47,7 @@ GString2Number::ToNumber( const string num )
     }
     catch (const std::exception &e)
     {
-        g_common_xml()->HandleError( GTextXml("exection caught trying to convert \"%s\" to a number ", num.c_str()  ).str() , GLOCATION_SRC, THROW_EXCEPTION );
+        g_common_xml()->HandleError(GTextXml("exection caught ( %s )trying to convert \"%s\" to a number ", e.what(), num.c_str()).str(), GLOCATION_SRC, THROW_EXCEPTION);
         return d;
     
     }

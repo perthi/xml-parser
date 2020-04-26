@@ -8,7 +8,7 @@
 #include "GXmlValidatorImpl.h"
 #include "LEnums.h"
 #include "GXmlMacros.h"
-#include <xml/GLocationXml.h>
+#include "GLocationXml.h"
 
 #include <libxml/xmlschemastypes.h>
 #include <libxml/xmlerror.h>
@@ -31,20 +31,20 @@ bool GXmlValidatorImpl::fHasError2 = false;
 
 static void schemaParseErrorHandler(void *  /*ctx*/, xmlErrorPtr error)
 {
-	///eLOGLEVEL loglevel =   GXmlValidatorImpl::ErrorLevel2Loglevel( error->level );
 	fprintf(stderr, "filename: %s\n", error->file );
 
-	// FORCE_DEBUG("msg1 = %s", error->str1 );
-	// FORCE_DEBUG("msg2 = %s", error->str2 );
-	// FORCE_DEBUG("msg3 = %s", error->str3 );
-
+#ifdef HAS_LOGGING
 	g_common_xml()->HandleError(  GTextXml(  "Offending file: %s (error code %d) (from %s line[%d])",
 	                                  error->message, error->code, __func__, __LINE__  ).str(),   
 									  GLocationXml(error->file, error->line,  "" ), 
 									  DISABLE_EXCEPTION    );
+#else
 
+	
 	g_common_xml()->HandleError(  GTextXml( "%s line %d contains error(s)  !!!!!!!!", 
 		                                 __func__, __LINE__  ).str(),   GLocationXml(error->file, error->line,  "" ), DISABLE_EXCEPTION    );
+	
+#endif
 	GXmlValidatorImpl::SetError(true);
 }
 
@@ -66,7 +66,16 @@ GXmlValidatorImpl::HasError()
 bool 
 GXmlValidatorImpl::DoExistFile( const string f  )
 {
-	FILE *fp = fopen(  f.c_str(), "r" );
+
+	FILE* fp = nullptr;
+	
+#ifdef _WIN32
+	fopen_s(&fp,  f.c_str(), "r");
+#else
+	fp = fopen(f.c_str(), "r");
+#endif // _WIN32
+
+	
 
 	if( fp == nullptr)
 	{

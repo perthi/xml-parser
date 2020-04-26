@@ -19,8 +19,8 @@
 using std::string;
 
 
-class GCommonXML;
-class GLocationXml;
+class  GCommonXML;
+struct GLocationXml;
 
 GCommonXML * g_common_xml();
 

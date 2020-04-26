@@ -12,7 +12,7 @@
 *** General Public License(LGPL) V3 or later.See.cpp file for details     ***
 *****************************************************************************/
 
-#include  <xml/GDefinitions.h>
+#include  "GDefinitions.h"
 
 #include <string>
 using std::string;

@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GColor.h" />
+    <ClInclude Include="GCommonXML.h" />
+    <ClInclude Include="GDefinitions.h" />
+    <ClInclude Include="GLocationXml.h" />
+    <ClInclude Include="GPrintable.h" />
+    <ClInclude Include="GString2Number.h" />
+    <ClInclude Include="GTextXml.h" />
+    <ClInclude Include="GXmlAttribute.h" />
+    <ClInclude Include="GXmlCDataNode.h" />
+    <ClInclude Include="GXmlClassFactory.h" />
+    <ClInclude Include="GXmlCloseTagNode.h" />
+    <ClInclude Include="GXmlCommentNode.h" />
+    <ClInclude Include="GXmlDataTypes.h" />
+    <ClInclude Include="GXmlDocTypeNode.h" />
+    <ClInclude Include="GXmlEntity.h" />
+    <ClInclude Include="GXmlEnum2String.h" />
+    <ClInclude Include="GXmlEnums.h" />
+    <ClInclude Include="GXmlMacros.h" />
+    <ClInclude Include="GXmlNode.h" />
+    <ClInclude Include="GXmlNodeImpl.h" />
+    <ClInclude Include="GXmlOpenTagNode.h" />
+    <ClInclude Include="GXmlParser.h" />
+    <ClInclude Include="GXmlProcInstructNode.h" />
+    <ClInclude Include="GXmlSingleTagNode.h" />
+    <ClInclude Include="GXmlStreamReader.h" />
+    <ClInclude Include="GXmlStreamReaderImpl.h" />
+    <ClInclude Include="GXmlStreamReaderSp.h" />
+    <ClInclude Include="GXmlStreamWriter.h" />
+    <ClInclude Include="GXmlStreamWriterImpl.h" />
+    <ClInclude Include="GXmlTagNode.h" />
+    <ClInclude Include="GXmlTextNode.h" />
+    <ClInclude Include="GXmlValidator.h" />
+    <ClInclude Include="GXmlValidatorImpl.h" />
+    <ClInclude Include="LEnums.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GXmlValidatorImpl.cpp" />
+    <ClCompile Include="GCommonXML.cpp" />
+    <ClCompile Include="GLocationXml.cpp" />
+    <ClCompile Include="GPrintable.cpp" />
+    <ClCompile Include="GString2Number.cpp" />
+    <ClCompile Include="GTextXml.cpp" />
+    <ClCompile Include="GXmlAttribute.cpp" />
+    <ClCompile Include="GXmlCDataNode.cpp" />
+    <ClCompile Include="GXmlClassFactory.cpp" />
+    <ClCompile Include="GXmlCommentNode.cpp" />
+    <ClCompile Include="GXmlDocTypeNode.cpp" />
+    <ClCompile Include="GXmlEntity.cpp" />
+    <ClCompile Include="GXmlEnum2String.cpp" />
+    <ClCompile Include="GXmlNodeImpl.cpp" />
+    <ClCompile Include="GXmlParser.cpp" />
+    <ClCompile Include="GXmlProcInstructNode.cpp" />
+    <ClCompile Include="GXmlStreamReaderImpl.cpp" />
+    <ClCompile Include="GXmlStreamReaderSp.cpp" />
+    <ClCompile Include="GXmlStreamWriterImpl.cpp" />
+    <ClCompile Include="GXmlTagNode.cpp" />
+    <ClCompile Include="GXmlTextNode.cpp" />
+    <ClCompile Include="GXmlValidator.cpp" />
+  </ItemGroup>
+</Project>

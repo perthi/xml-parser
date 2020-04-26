@@ -1,0 +1,1 @@
+﻿C:\work\github\logmaster\submodules\productivity\gtest\msvc\2010\gtest-md.vcxproj(64,5): error MSB4019: The imported project "C:\work\github\logmaster\submodules\productivity\shared-properties\common.props" was not found. Confirm that the expression in the Import declaration "..\..\..\shared-properties\common.props" is correct, and that the file exists on disk.

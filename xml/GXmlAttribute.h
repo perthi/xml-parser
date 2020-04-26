@@ -8,7 +8,7 @@
 #ifndef GXMLATTRIBUTE_H
 #define GXMLATTRIBUTE_H
 
-#include <xml/GDefinitions.h>
+#include "GDefinitions.h"
 #include <string>
 
 

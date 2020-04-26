@@ -13,8 +13,8 @@
 #include <string>
 using std::string;
 
-#include <utilities/GPrintable.h>
-#include <utilities/GDefinitions.h>
+#include "GPrintable.h"
+#include "GDefinitions.h"
 
 
 struct  GXmlEntity : public GPrintable

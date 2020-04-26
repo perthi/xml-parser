@@ -9,8 +9,8 @@
 *** General Public License (LGPL) V3 or later. See .cpp file for details ***
 *****************************************************************************/
 
-#include <xml/GDefinitions.h>
-#include <xml/GPrintable.h>
+#include  "GDefinitions.h"
+#include  "GPrintable.h"
 
 #include <string>
 using std::string;

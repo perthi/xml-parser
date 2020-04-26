@@ -26,8 +26,8 @@
 ******************************************************************************
 ******************************************************************************/
 
-#include  <xml/GCommonXML.h>
-#include <xml/GDefinitions.h>
+#include  "GCommonXML.h"
+#include  "GDefinitions.h"
 
 
 #ifdef HAS_LOGGING
@@ -37,7 +37,7 @@
 #include <exception/GException.h>
 using namespace LOGMASTER;
 #else
-#include <xml/GLocationXml.h>
+#include "GLocationXml.h"
 #endif
 
 #include <iostream>

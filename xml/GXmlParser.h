@@ -10,15 +10,15 @@
 
 #pragma once
 
-#include  <xml/GXmlNode.h>
-#include  <xml/GXmlStreamReader.h>
-#include  <xml/GXmlAttribute.h>
-#include  <xml/GString2Number.h>
+#include  "GXmlNode.h"
+#include  "GXmlStreamReader.h"
+#include  "GXmlAttribute.h"
+#include  "GString2Number.h"
+#include  "GXmlParser.h"
+#include  "GXmlMacros.h"
+#include  "GCommonXML.h"
+#include  "GLocationXml.h"
 
-#include "GXmlParser.h"
-#include "GXmlMacros.h"
-#include  <xml/GCommonXML.h>
-#include <xml/GLocationXml.h>
 #include <stdio.h>
 #include <string.h>
 

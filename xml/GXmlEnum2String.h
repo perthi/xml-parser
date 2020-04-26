@@ -3,7 +3,7 @@
 #define GXMLENUM2STRING_H
 
 
-#include <xml/GXmlEnums.h>
+#include "GXmlEnums.h"
 #include <string>
 
 using std::string;

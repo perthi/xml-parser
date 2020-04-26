@@ -10,8 +10,8 @@
 #define GXMLSTREAMREADERSP_H
 
 #include "GXmlNode.h"
-#include "xml/GXmlStreamReader.h"
-#include "xml/GXmlClassFactory.h"
+#include "GXmlStreamReader.h"
+#include "GXmlClassFactory.h"
 #include "GXmlEnums.h"
 
 #include <memory>

@@ -7,9 +7,9 @@
 
 #include "GXmlClassFactory.h"
 #include "GXmlStreamWriterImpl.h"
-
 #include "GXmlMacros.h"
-#include <xml/GLocationXml.h>
+#include "GLocationXml.h"
+
 
 #define MY_ENCODING "UTF-8"
 

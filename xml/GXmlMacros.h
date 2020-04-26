@@ -1,12 +1,12 @@
 
 
-#include  <xml/GCommonXML.h>
-#include  <xml/GTextXml.h>
+#include  "GCommonXML.h"
+#include  "GTextXml.h"
 
 #ifdef HAS_LOGGING
 #include  <utilities/GLocation.h>
 #else
-#include  <xml/GLocationXml.h>
+#include  "GLocationXml.h"
 #endif
 
 #define XML(s,l, m) \
