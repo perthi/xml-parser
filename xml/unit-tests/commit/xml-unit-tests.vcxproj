@@ -144,6 +144,9 @@
       <AdditionalDependencies>xml.lib;libxml2.lib;gtest.lib</AdditionalDependencies>
       <TreatLinkerWarningAsErrors>false</TreatLinkerWarningAsErrors>
     </Link>
+    <PreBuildEvent>
+      <Command>copy  $(SolutionDir)\xml\3rd-party\libxml\lib\x86\*  $(bindir)</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -164,6 +167,9 @@
       <AdditionalDependencies>xml.lib;libxml2.lib;gtest.lib</AdditionalDependencies>
       <TreatLinkerWarningAsErrors>false</TreatLinkerWarningAsErrors>
     </Link>
+    <PreBuildEvent>
+      <Command>copy  $(SolutionDir)\xml\3rd-party\libxml\lib\x64\*  $(bindir)</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="TestGXmlClassFactory.cpp" />

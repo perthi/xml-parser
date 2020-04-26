@@ -17,8 +17,9 @@ using std::string;
 #include "GDefinitions.h"
 
 
-struct  GXmlEntity : public GPrintable
+class  GXmlEntity : public GPrintable
 {
+public:
 	API GXmlEntity();
 	virtual API ~GXmlEntity();
 	virtual  string API str() const override = 0;
