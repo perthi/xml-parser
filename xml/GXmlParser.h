@@ -86,11 +86,14 @@ GXmlParser::GetTagValue( std::shared_ptr<GXmlStreamReader> xmlReader, const stri
 
 	XML_ASSERT( node != nullptr,  "  xmlReader->ReadNode() returned a ZERO POINTER !!!", l );
 
-	if( node->GetType()  == eXML_NODETYPE::ESingleTagNode)
+	if (node != nullptr)
 	{
-		g_common_xml()->HandleError( GTextXml( "%s is a single tag node (with no value) !!", tagname.c_str() ).str(), l, DISABLE_EXCEPTION );
-		vector<GXmlAttribute> tmp =  node->GetAttributes();
-		 return "";
+		if (node->GetType() == eXML_NODETYPE::ESingleTagNode)
+		{
+			g_common_xml()->HandleError(GTextXml("%s is a single tag node (with no value) !!", tagname.c_str()).str(), l, DISABLE_EXCEPTION);
+			vector<GXmlAttribute> tmp = node->GetAttributes();
+			return "";
+		}
 	}
 
 	XML_ASSERT( node->GetType() == eXML_NODETYPE::EOpenTagNode, 
