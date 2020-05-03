@@ -27,7 +27,7 @@
 bool GXmlValidatorImpl::fHasError2 = false;
 
 
-#define SETPOS() { location = GLocationXml(__FILE__, __LINE__, __func__); }
+#define SETPOS_XML() { location = GLocationXml(__FILE__, __LINE__, __func__); }
 
 static void schemaParseErrorHandler(void *  /*ctx*/, xmlErrorPtr error)
 {
@@ -103,7 +103,7 @@ GXmlValidatorImpl::IsValid( string xml ,  string xsd )
 		XML_ASSERT(  DoExistFile( xsd ), GTextXml("could not open file %s", xsd.c_str() ).str(), GLOCATION_SRC  ) ;
 
 		::xmlSetGenericErrorFunc(&location, DoError);
-		SETPOS(); xmlSchemaParserCtxtPtr schemaTextParser = ::xmlSchemaNewParserCtxt(xsd.c_str());
+		SETPOS_XML(); xmlSchemaParserCtxtPtr schemaTextParser = ::xmlSchemaNewParserCtxt(xsd.c_str());
 		
 		if( schemaTextParser == nullptr )
 		{
@@ -112,7 +112,7 @@ GXmlValidatorImpl::IsValid( string xml ,  string xsd )
 
 		xmlSchemaSetParserErrors(schemaTextParser, DoError, DoWarning, &location);
 		xmlSchemaSetParserStructuredErrors( schemaTextParser, schemaParseErrorHandler, &has_schema_errors);
-		SETPOS(); xmlSchemaPtr schema = xmlSchemaParse(schemaTextParser);
+		SETPOS_XML(); xmlSchemaPtr schema = xmlSchemaParse(schemaTextParser);
 
 		if( HasError() == true )
 		{
@@ -126,7 +126,7 @@ GXmlValidatorImpl::IsValid( string xml ,  string xsd )
 
 		// schemaParseErrorHandler
 
-		SETPOS(); xmlSchemaValidCtxtPtr ctxt = xmlSchemaNewValidCtxt(schema);
+		SETPOS_XML(); xmlSchemaValidCtxtPtr ctxt = xmlSchemaNewValidCtxt(schema);
 		xmlSchemaSetValidStructuredErrors(ctxt, schemaParseErrorHandler, &has_schema_errors);
 		
 		XML_ASSERT ( has_schema_errors == false, "XML ore XSD contains errors", GLOCATION_SRC );
@@ -139,9 +139,9 @@ GXmlValidatorImpl::IsValid( string xml ,  string xsd )
 			g_common_xml()->HandleError( GTextXml( "XML file %s contains errors", xml.c_str()  ).str() , GLOCATION_SRC, THROW_EXCEPTION  );
 		}
 
-		SETPOS(); xmlDocPtr doc = xmlReadFile(xml.c_str(), nullptr, 0);
+		SETPOS_XML(); xmlDocPtr doc = xmlReadFile(xml.c_str(), nullptr, 0);
 		XML_ASSERT(doc != nullptr,  GTextXml( "Could not parse %s", xml.c_str() ).str(), GLOCATION_SRC );
-		SETPOS(); int ret = xmlSchemaValidateDoc(ctxt, doc);
+		SETPOS_XML(); int ret = xmlSchemaValidateDoc(ctxt, doc);
 		xmlSchemaFreeValidCtxt(ctxt);
 		
 		xmlFreeDoc(doc);

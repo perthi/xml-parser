@@ -5,7 +5,7 @@
 LIBNAME_SO:=libxml-embc.so	
 ## endif	
 
-#LIBNAME_A:=libxml-embc.a
+LIBNAME_A:=libxml-embc.a
 
 
 SRCCPP+= GXmlAttribute.cpp \

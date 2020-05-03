@@ -31,14 +31,15 @@ GCommonXML * g_common_xml();
 /** @brief Some common global defines and functions */
 class GCommonXML
 {
+	
 	friend    GCommonXML * g_common_xml();
 
 public:
+GCommonXML() {};
+	~GCommonXML() {};
 	void  HandleError(const string message, const GLocationXml l, const bool disable_error );
 
 private:
-	GCommonXML() {};
-	~GCommonXML() {};
 
 };
 

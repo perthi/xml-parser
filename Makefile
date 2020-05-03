@@ -68,6 +68,7 @@ xml-validator:=       xml/xml-validator/$(TARGET)
 
 unittests:= $(xml-unittest)
 
+
 src-lib:= $(gtest-linux) \
 	      $(xml)
 
@@ -83,7 +84,8 @@ x86-src:=$(src-lib) $(src-exe) $(version-info)
 
 
 ifeq (x86, $(TARGET))
-all-src:=$(x86-src)
+src-lib+=$(xml)
+all-src:=$(x86-src) 
 endif
 
 
@@ -142,8 +144,11 @@ $(INSTALLDIRS):
 
 
 x86:
-
 	@$(MAKE) TARGET=x86
+
+
+arm:
+	#@$(MAKE) TARGET=arm
 
 
 

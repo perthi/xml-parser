@@ -91,7 +91,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)xml\3rd-party\;$(SolutionDir)\submodules\xml-parser\xml\3rd-party\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)xml\3rd-party\;$(SolutionDir)\submodules\xml-parser-1-0-2\xml\3rd-party\;</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
@@ -111,7 +111,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)xml\3rd-party\;$(SolutionDir)\submodules\xml-parser\xml\3rd-party\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)xml\3rd-party\;$(SolutionDir)\submodules\xml-parser-1-0-2\xml\3rd-party\;</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
@@ -133,7 +133,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)xml\3rd-party\;$(SolutionDir)\submodules\xml-parser\xml\3rd-party\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)xml\3rd-party\;$(SolutionDir)\submodules\xml-parser-1-0-2\xml\3rd-party\;</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
@@ -157,7 +157,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)xml\3rd-party\;$(SolutionDir)\submodules\xml-parser\xml\3rd-party\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)xml\3rd-party\;$(SolutionDir)\submodules\xml-parser-1-0-2\xml\3rd-party\;</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
