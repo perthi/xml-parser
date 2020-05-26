@@ -39,3 +39,6 @@ xml/xml-validator/x86/xml-validator
 **/build/
 **/.vs/
 **/bin
+gtest-linux/x86/libgtest.a
+xml/x86/libxml-embc.a
+
