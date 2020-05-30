@@ -85,7 +85,6 @@ int main(int argc, const char **  argv )
 void 
 ScanArguments( int argc, const char ** argv, string &xml, string &xsd )
 {
-    COUT << "ARGC = " << argc << endl;
     if( argc < 2 || argc > 3 )
     {
         help( argv[0] );
@@ -97,7 +96,6 @@ ScanArguments( int argc, const char ** argv, string &xml, string &xsd )
     } 
     else
     {
-        COUT "TP0" << endl;
         xml = string(argv[1]);
         xsd = string( argv[2]);
     }
