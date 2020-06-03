@@ -41,4 +41,5 @@ xml/xml-validator/x86/xml-validator
 **/bin
 gtest-linux/x86/libgtest.a
 xml/x86/libxml-embc.a
+xml/arm/libxml-embc.a
 
