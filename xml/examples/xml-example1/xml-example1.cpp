@@ -63,15 +63,15 @@ int main()
 	}
 	catch (GException &e)
 	{
-		cout << e.what() << ENDL;
+		cout << e.what() << endl;
 	}
 	catch( std::exception &e)
 	{	
-		CERR << e.what() << ENDL;
+		CERR << e.what() << endl;
 	}
 	catch( string &e)
 	{
-		CERR << e << ENDL;
+		CERR << e << endl;
 	}
 	catch(...)
 	{

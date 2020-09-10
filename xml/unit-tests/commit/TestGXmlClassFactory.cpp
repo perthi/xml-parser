@@ -62,11 +62,11 @@ TEST_F(TestGXmlClassFactory, CreateStreamWriter)
 	}
 	catch(std::exception &e)
 	{
-		CERR << e.what() << ENDL;
+		CERR << e.what() << endl;
 	}
 	catch(...)
 	{
-		CERR << "UNKNOWN exception caught" << ENDL;
+		CERR << "UNKNOWN exception caught" << endl;
 	}
 
 }
@@ -227,16 +227,16 @@ TEST_F(TestGXmlClassFactory, CreateStreamReader)
 		}
 	 catch(GException &e)
 	 {
-	 	CERR << e.what() << ENDL;
+	 	CERR << e.what() << endl;
 	 }
 
 	 catch(std::exception &e)
 	 {
-	 	CERR << e.what() << ENDL;
+	 	CERR << e.what() << endl;
 	 }
 	 catch(...)
 	 {
-	 	CERR << "UNKNOWN exception caught" << ENDL;
+	 	CERR << "UNKNOWN exception caught" << endl;
 	 }
 }
 

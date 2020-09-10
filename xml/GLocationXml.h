@@ -41,7 +41,7 @@ struct GLocationXml
 
         static char loc[4096];
         SPRINTF(loc, 4096, "%s[line%d]: %s", fFileName.c_str() , fLineNo, fFunctName.c_str() );
-    
+       // CERR << "loc = " << endl;
         return loc;
     }
 
