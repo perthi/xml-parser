@@ -30,7 +30,7 @@
 #include "GTextXml.h"
 #include <cstdarg>
 
-#define GTextXml_MAX_SIZE 4096
+#define XML_MAX_SIZE 4096
 
 
 GTextXml::GTextXml(const char * fmt, ...) : fText("")
@@ -42,16 +42,6 @@ GTextXml::GTextXml(const char * fmt, ...) : fText("")
  }
 
 
-// GTextXml::GTextXml(char *message, const int n, const char * fmt, ...) : fText("")
-// {
-//     va_list ap;
-//     va_start(ap, fmt);
-//     vsnprintf(message, n-1 , fmt, ap);
-//     SetGTextXml(fmt, ap);
-//     va_end(ap);
-// }
-
-
 GTextXml::GTextXml(const string s ) : fText("")
 {   
    fText = s;
@@ -61,7 +51,7 @@ GTextXml::GTextXml(const string s ) : fText("")
 void
 GTextXml::SetGTextXml(const char *fmt, va_list ap)
 {
-    static char msg[GTextXml_MAX_SIZE]; // CRAP PTH
+    static char msg[XML_MAX_SIZE];
     vsnprintf(msg, sizeof(msg) -1, fmt, ap);
     fText = string(msg);
 }
