@@ -58,7 +58,7 @@ LIBS= -L $(CURDIR)/build/$(TARGET)/lib  -lm
 
 export UNIT_TEST_LIBS:= -lgtest -lpthread 
 
-gtest-linux:=         gtest-linux/$(TARGET)
+gtest-embc:=         gtest-embc/$(TARGET)
 
 xml:=                 xml/$(TARGET)
 xml-unittest:=        xml/unit-tests/commit/$(TARGET)
@@ -69,7 +69,7 @@ xml-validator:=       xml/xml-validator/$(TARGET)
 unittests:= $(xml-unittest)
 
 
-src-lib:= $(gtest-linux) \
+src-lib:= $(gtest-embc) \
 	      $(xml)
 
 
@@ -123,7 +123,7 @@ all: $(all-src)
 
 
 all-clean:=$(x86-src)
-unittest-common =  $(testlib)  $(support-modules)  $(gtest-linux)
+unittest-common =  $(testlib)  $(support-modules)  $(gtest-embc)
 
 $(src-exe) : $(src-lib)
 
