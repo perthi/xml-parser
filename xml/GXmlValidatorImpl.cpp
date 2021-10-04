@@ -167,7 +167,7 @@ GXmlValidatorImpl::IsValid( string xml ,  string xsd )
 	}
 	catch(std::string &e)
 	{
-		CERR << e << ENDL;
+		CERR << e << endl;
 	}
 	catch (...)
 	{

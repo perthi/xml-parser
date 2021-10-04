@@ -11,7 +11,7 @@
 #ifdef _WIN32
 #include <gtest/gtest.h>
 #else
-#include <gtest-linux/gtest.h>
+#include <gtest-embc/gtest.h>
 #endif
 
 #include <string>
